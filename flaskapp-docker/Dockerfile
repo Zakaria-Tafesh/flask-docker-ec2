@@ -1,5 +1,4 @@
-FROM ubuntu:18.04
-MAINTAINER chiragr83@gmail.com
+FROM ubuntu:22.04
 
 RUN apt-get update -y
 RUN apt-get install python3-pip -y
