@@ -7,6 +7,7 @@ services:
     restart: always
     network_mode: host
 
+
   flaskapp2:
     build: ./flaskapp2-docker
     container_name: flaskapp2
