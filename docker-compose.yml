@@ -18,6 +18,8 @@ services:
     build: ./flaskapp3-docker
     container_name: flaskapp3
     restart: always
+    volumes:
+      - /home/ubuntu/shared_docker/:/opt/shared_docker/
     network_mode: host
 
   nginx:
