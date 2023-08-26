@@ -13,6 +13,12 @@ services:
     restart: always
     network_mode: host
 
+  flaskapp3:
+    build: ./flaskapp3-docker
+    container_name: flaskapp3
+    restart: always
+    network_mode: host
+
   nginx:
     build: ./nginx
     container_name: nginx
