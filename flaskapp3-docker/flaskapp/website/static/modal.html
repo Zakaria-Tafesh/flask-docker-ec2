@@ -1,0 +1,26 @@
+<div>
+    <script type="text/ng-template" id="modaldialog.html">
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title">Income</h4>
+        </div>
+        <div class="modal-body">
+            <div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        Date
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <div date-directive ng-model="note.data"></div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" class="form-control" placeholder="enter place" ng-model="note.data" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" ng-click="save()">save</button>
+            <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>

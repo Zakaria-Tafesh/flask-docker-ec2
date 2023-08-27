@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="static/zones.css">
+
+
+        <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+
+<title>Table Example</title>
+<script>
+
+// Stop the form resubmission on page refresh
+
+if ( window.history.replaceState ) {
+
+window.history.replaceState( null, null, window.location.href );
+
+}
+
+</script>
+
+</head>
+
+
+<body>
+<div class="table-container">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Client Name</th>
+                <th>Payload</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            {% for zone in zones %}
+                <tr>
+                    <td>{{ zone.client_name }}</td>
+                    <td>{{ zone.payload }}</td>
+                    <td >
+                        <button class="edit-button" >Edit</button>
+                        <button class="delete-button" onclick="deleteZone({{ zone.id }})">Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+    <br>
+
+    <form method="POST" >
+        <label for="client_name">clientname</label>
+        <textarea name="client_name" id="client_name" class="form-control"></textarea>
+        <br>
+        <label for="payload">payload</label>
+        <textarea name="payload" id="payload" class="form-control"></textarea>
+        <br>
+
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Add Zone</button>
+        </div>
+    </form>
+
+
+</div>
+
+<script src="static/zones.js"></script>
+</body>
+</html>

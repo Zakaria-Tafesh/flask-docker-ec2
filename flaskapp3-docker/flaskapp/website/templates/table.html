@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="static/table.js"></script>
+</head>
+
+<body ng-controller="HomeController">
+    <br>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>date</th>
+                    <th>place</th>
+                    <th>edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for note in notes %}
+                    <tr >
+                        <td>{{ note.data }}</td>
+                        <td>{{ note.data }}</td>
+                        <td>
+                            <button class="btn btn-primary" type="button" ng-click="edit(note)">edit</button>
+                            <button class="btn btn-danger" type="button" ng-click="delete($index)">delete</button>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button class="btn btn-primary" ng-click="openModal()">Add Zone</button>
+        <div ng-include="'static/modal.html'"></div>
+    </div>
+    <div class="modal" id="incomeModal"></div>
+</body>
+
+</html>

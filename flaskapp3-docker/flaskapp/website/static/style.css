@@ -1,0 +1,80 @@
+/* Apply some basic styles to the table */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Style the table header */
+.table thead th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Style the table cells */
+.table td {
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Add a subtle hover effect to buttons */
+.btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+/* Center content vertically within cells */
+.table th,
+.table td {
+    display: flex;
+    align-items: center;
+}
+
+/* Add some spacing between table and container */
+.container {
+    margin: 20px auto;
+    max-width: 1000px; /* Adjust the maximum width as needed */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Display multiple columns */
+.table thead th,
+.table td {
+    width: auto; /* Let columns size based on content */
+}
+
+/* Display the action buttons in a separate column */
+.table td.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Style client_name and payload */
+.client-name {
+    font-weight: bold;
+}
+
+.payload {
+    color: #666;
+    margin-top: 5px;
+}
