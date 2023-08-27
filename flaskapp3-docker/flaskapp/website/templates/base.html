@@ -14,8 +14,21 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="static/zones.css">
 
     <title>{% block title %}Home{% endblock %}</title>
+    <script>
+
+      // Stop the form resubmission on page refresh
+
+      if ( window.history.replaceState ) {
+
+      window.history.replaceState( null, null, window.location.href );
+
+      }
+
+    </script>
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -84,6 +97,7 @@
     <script
       src="static/script.js"
     ></script>
+  <script src="static/zones.js"></script>
 
   </body>
 </html>

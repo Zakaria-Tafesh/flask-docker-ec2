@@ -75,7 +75,7 @@ def zones_page():
 
             flash('Zone created!', category='success')
     print(current_user.zones)
-    return render_template('zones.html', zones=current_user.zones)
+    return render_template('zones.html', user=current_user, zones=current_user.zones)
 
 
 
