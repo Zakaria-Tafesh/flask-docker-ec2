@@ -20,11 +20,16 @@
                     <td>{{ zone.client_name }}</td>
                     <td>{{ zone.payload[:20] }}</td>
                     <td>
+                        {% if not zone.url %}
+                            None
+                        {% else %}
                           <a href="{{ zone.url }}">
                             <div style="height:100%;width:100%">
                               {{ zone.url[:40] }}
                             </div>
                           </a>
+
+                        {% endif %}
 
                      </td>
 
