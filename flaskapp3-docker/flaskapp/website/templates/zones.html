@@ -24,14 +24,14 @@
                         {% else %}
                           <a href="{{ zone.url }}">
                             <div style="height:100%;width:100%">
-                              {{ zone.url[:40] }}
+                              {{ zone.url[:10] }}
                             </div>
                           </a>
 
                         {% endif %}
 
                      </td>
-                    <td>{{ zone.payload[:20] }}</td>
+                    <td>{{ zone.payload[:10] }}</td>
 
                     <td >
                         <button class="edit-button" >Edit</button>
