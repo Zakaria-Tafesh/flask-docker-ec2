@@ -27,7 +27,7 @@ function deleteZone(zoneId) {
         method: "POST",
         body: JSON.stringify({ zoneId: zoneId }),
         }).then((_res) => {
-        window.location.href = "/zones";
+        window.location.href = "/";
         });
             }
 
