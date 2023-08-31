@@ -13,6 +13,7 @@ class Note(db.Model):
 class Zone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_name = db.Column(db.String(20))
+    url = db.Column(db.String(4000))
     payload = db.Column(db.String(20_000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

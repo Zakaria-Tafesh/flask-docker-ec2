@@ -23,28 +23,6 @@ def home():
     return render_template("home.html", user=current_user)
 
 
-# @views.route('/table', methods=['GET', 'POST'])
-# @login_required
-# def table():
-#     # if request.method == 'POST':
-#     #     note = request.form.get('note')
-#     #     if len(note) < 1:
-#     #         flash('Note is too short', category='error')
-#     #     else:
-#     #         new_note = Note(data=note, user_id=current_user.id)
-#     #         db.session.add(new_note)
-#     #         db.session.commit()
-#     #         flash('Note Added!', category='success')
-#
-#     return render_template("table.html", notes=current_user.notes)
-
-# Sample data for demonstration
-zones = [
-    {"client_name": "John Doe", "payload": "Data 1"},
-    {"client_name": "Jane Smith", "payload": "Data 2"},
-    # Add more data as needed
-]
-
 
 @views.route('/zones', methods=['GET', 'POST'])
 @login_required

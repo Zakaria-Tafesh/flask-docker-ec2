@@ -18,6 +18,15 @@
                 <tr>
                     <td>{{ zone.client_name }}</td>
                     <td>{{ zone.payload[:20] }}</td>
+                    <td>
+                          <a href="{{ zone.url }}">
+                            <div style="height:100%;width:100%">
+                              zone.url[:40]
+                            </div>
+                          </a>
+
+                        {{ zone.payload[:20] }}</td>
+
                     <td >
                         <button class="edit-button" >Edit</button>
                         <button class="delete-button" onclick="deleteZone({{ zone.id }})">Delete</button>
