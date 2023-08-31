@@ -17,7 +17,7 @@
             {% for zone in zones %}
                 <tr>
                     <td>{{ zone.client_name }}</td>
-                    <td>{{ zone.payload }}</td>
+                    <td>{{ zone.payload[:20] }}</td>
                     <td >
                         <button class="edit-button" >Edit</button>
                         <button class="delete-button" onclick="deleteZone({{ zone.id }})">Delete</button>
