@@ -18,7 +18,6 @@
             {% for zone in zones %}
                 <tr>
                     <td>{{ zone.client_name }}</td>
-                    <td>{{ zone.payload[:20] }}</td>
                     <td>
                         {% if not zone.url %}
                             None
@@ -32,6 +31,7 @@
                         {% endif %}
 
                      </td>
+                    <td>{{ zone.payload[:20] }}</td>
 
                     <td >
                         <button class="edit-button" >Edit</button>
