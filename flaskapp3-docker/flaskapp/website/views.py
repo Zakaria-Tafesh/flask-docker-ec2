@@ -29,6 +29,7 @@ def home():
 def zones_page():
     if request.method == 'POST':
         client_name = request.form.get('client_name')
+        url = request.form.get('url')
         payload = request.form.get('payload')
 
         # zone = Zone.query.filter_by(client_name=client_name).first()
@@ -42,6 +43,7 @@ def zones_page():
             # add user to database
             new_zone = Zone(client_name=client_name,
                             payload=payload,
+                            url=url,
                             user_id=current_user.id
                             )
             print(client_name)
