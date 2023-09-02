@@ -49,11 +49,12 @@ function updateZone1(zoneId) {
         document.getElementById("url").innerHTML = data['url'] ;
         document.getElementById("payload").innerHTML = data['payload'] ;
 
-        let pageBottom = document.querySelector("#page-bottom");
-        pageBottom.scrollIntoView();
 
         document.getElementById("update-zone").style.display = "block";
         document.getElementById("add-zone").style.display = "none";
+
+        let pageBottom = document.querySelector("#page-bottom");
+        pageBottom.scrollIntoView();
 
     }) ;
 
