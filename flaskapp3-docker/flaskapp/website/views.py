@@ -113,7 +113,7 @@ def update_zone2():
             zone.client_name = client_name
             zone.url = url
             zone.payload = payload
-
+            db.session.commit()
             return jsonify({'client_name': zone.client_name,
                             'url': zone.url,
                             'payload': zone.payload})
