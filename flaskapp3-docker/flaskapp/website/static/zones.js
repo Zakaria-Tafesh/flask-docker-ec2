@@ -36,14 +36,18 @@ function deleteZone(zoneId) {
 function updateZone1(zoneId) {
     // let elements = document.getElementsByName("fname");
     alert('Hello ' + zoneId);
-    document.getElementById("client_name").innerHTML = zoneId ;
 
-    // fetch("/delete-zone", {
-    // method: "POST",
-    // body: JSON.stringify({ zoneId: zoneId }),
-    // }).then((_res) => {
-    // window.location.href = "/";
-    // });
+
+    // document.getElementById("client_name").innerHTML = zoneId ;
+
+    fetch("/update-zone1", {
+    method: "POST",
+    body: JSON.stringify({ zoneId: zoneId }),
+    }).then((_res) => {
+    alert('_res ' + _res);
+
+    window.location.href = "/";
+    });
 
 
 }

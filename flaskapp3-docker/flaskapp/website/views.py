@@ -83,13 +83,14 @@ def delete_zone():
     return jsonify({})
 
 
-# @views.route('/update-zone', methods=['POST'])
-# def delete_zone():
-#     zone = json.loads(request.data)
-#     zone_id = zone['zoneId']
-#     zone = Zone.query.get(zone_id)
-#     if zone:
-#         if zone.user_id == current_user.id:
-#             db.session.delete(zone)
-#             db.session.commit()
-#     return jsonify({})
+@views.route('/update-zone1', methods=['POST'])
+def update_zone1():
+    zone = json.loads(request.data)
+    zone_id = zone['zoneId']
+    zone = Zone.query.get(zone_id)
+    # if zone:
+        # if zone.user_id == current_user.id:
+        #     db.session.delete(zone)
+        #     db.session.commit()
+    return 'Zakaria'
+    # return jsonify({})
