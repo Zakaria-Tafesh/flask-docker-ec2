@@ -62,3 +62,35 @@ function updateZone1(zoneId) {
 
 
 }
+
+function updateZone2() {
+    let zone_id = document.getElementById("zone_id").innerText;
+    let client_name = document.getElementById("client_name").innerText;
+    let url = document.getElementById("url").innerText;
+    let payload = document.getElementById("payload").innerText;
+    alert('Zone : ' + zone_id + client_name + url +  payload)
+
+    // document.getElementById("client_name").innerHTML = zoneId ;
+
+    // fetch("/update-zone2", {
+    // method: "POST",
+    // body: JSON.stringify({ zoneId: zoneId }),
+    // }).then(response => response.json()).then(data => {
+    //     // alert('Hello ' + data);
+    //     document.getElementById("client_name").innerHTML = data['client_name'] ;
+    //     document.getElementById("url").innerHTML = data['url'] ;
+    //     document.getElementById("payload").innerHTML = data['payload'] ;
+    //     document.getElementById("zone_id").innerHTML = zoneId ;
+    //
+    //
+    //     document.getElementById("update-zone").style.display = "block";
+    //     document.getElementById("cancel").style.display = "block";
+    //     document.getElementById("add-zone").style.display = "none";
+    //
+    //     let pageBottom = document.querySelector("#zone_id");
+    //     pageBottom.scrollIntoView();
+    //
+    // }) ;
+
+
+}
