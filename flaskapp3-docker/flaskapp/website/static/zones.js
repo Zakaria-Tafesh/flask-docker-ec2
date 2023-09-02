@@ -99,7 +99,7 @@ function updateZone2() {
 
 }
 
-function cancel() {
+function cancel2() {
         document.getElementById("client_name").innerHTML = "" ;
         document.getElementById("url").innerHTML = "" ;
         document.getElementById("payload").innerHTML = "" ;
