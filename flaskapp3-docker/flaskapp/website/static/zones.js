@@ -32,3 +32,16 @@ function deleteZone(zoneId) {
             }
 
   }
+
+function updateZone1(zoneId) {
+    // let elements = document.getElementsByName("fname");
+    alert('Hello');
+    // fetch("/delete-zone", {
+    // method: "POST",
+    // body: JSON.stringify({ zoneId: zoneId }),
+    // }).then((_res) => {
+    // window.location.href = "/";
+    // });
+
+
+}
