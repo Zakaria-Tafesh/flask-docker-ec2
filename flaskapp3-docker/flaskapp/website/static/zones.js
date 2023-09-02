@@ -49,12 +49,9 @@ function updateZone1(zoneId) {
         document.getElementById("url").innerHTML = data['url'] ;
         document.getElementById("payload").innerHTML = data['payload'] ;
 
-        let scrollToBottom = document.querySelector("#scroll-to-bottom")
-        let pageBottom = document.querySelector("#page-bottom")
+        let pageBottom = document.querySelector("#page-bottom");
 
-        scrollToBottom.addEventListener("click", function() {
-          pageBottom.scrollIntoView()
-        })
+          pageBottom.scrollIntoView();
     }) ;
 
 
