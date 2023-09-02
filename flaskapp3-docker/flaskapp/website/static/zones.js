@@ -48,7 +48,7 @@ function updateZone1(zoneId) {
         document.getElementById("client_name").innerHTML = data['client_name'] ;
         document.getElementById("url").innerHTML = data['url'] ;
         document.getElementById("payload").innerHTML = data['payload'] ;
-        // document.getElementById("zone_id").innerHTML = zoneId ;
+        document.getElementById("zone_id").innerHTML = zoneId ;
 
 
         document.getElementById("update-zone").style.display = "block";
