@@ -92,7 +92,7 @@ function updateZone2() {
 
         let home = document.querySelector("#home");
         home.scrollIntoView();
-
+        window.location.href = "/";
     }) ;
 
 
