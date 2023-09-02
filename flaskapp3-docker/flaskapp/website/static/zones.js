@@ -65,9 +65,9 @@ function updateZone1(zoneId) {
 
 function updateZone2() {
     let zone_id = document.getElementById("zone_id").innerHTML;
-    let client_name = document.getElementById("client_name").innerText;
-    let url = document.getElementById("url").innerHTML;
-    let payload = document.getElementById("payload").innerHTML;
+    let client_name = document.getElementById("client_name").value;
+    let url = document.getElementById("url").value;
+    let payload = document.getElementById("payload").value;
     alert('Zone : ' + zone_id + client_name + url +  payload);
 
     // document.getElementById("client_name").innerHTML = zoneId ;
