@@ -97,3 +97,23 @@ def update_zone1():
 
     # return 'Zakaria'
     # return jsonify({'1': 'Zakaria'})
+
+@views.route('/update-zone2', methods=['POST'])
+def update_zone2():
+    zone = json.loads(request.data)
+    zone_id = zone['zone_id']
+    client_name = zone['client_name']
+    url = zone['url']
+    payload = zone['payload']
+
+    zone = Zone.query.get(zone_id)
+
+    if zone:
+        if zone.user_id == current_user.id:
+            zone.client_name = client_name
+            zone.url = url
+            zone.payload = payload
+
+            return jsonify({'client_name': zone.client_name,
+                            'url': zone.url,
+                            'payload': zone.payload})

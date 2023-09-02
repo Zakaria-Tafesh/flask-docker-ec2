@@ -70,27 +70,30 @@ function updateZone2() {
     let payload = document.getElementById("payload").value;
     alert('Zone : ' + zone_id + client_name + url +  payload);
 
-    // document.getElementById("client_name").innerHTML = zoneId ;
+    fetch("/update-zone2", {
+    method: "POST",
+    body: JSON.stringify({ zone_id: zone_id,
+        client_name: client_name,
+        url: url,
+        payload: payload,
 
-    // fetch("/update-zone2", {
-    // method: "POST",
-    // body: JSON.stringify({ zoneId: zoneId }),
-    // }).then(response => response.json()).then(data => {
-    //     // alert('Hello ' + data);
-    //     document.getElementById("client_name").innerHTML = data['client_name'] ;
-    //     document.getElementById("url").innerHTML = data['url'] ;
-    //     document.getElementById("payload").innerHTML = data['payload'] ;
-    //     document.getElementById("zone_id").innerHTML = zoneId ;
-    //
-    //
-    //     document.getElementById("update-zone").style.display = "block";
-    //     document.getElementById("cancel").style.display = "block";
-    //     document.getElementById("add-zone").style.display = "none";
-    //
-    //     let pageBottom = document.querySelector("#zone_id");
-    //     pageBottom.scrollIntoView();
-    //
-    // }) ;
+    }),
+    }).then(response => response.json()).then(data => {
+        // alert('Hello ' + data);
+        document.getElementById("client_name").innerHTML = "" ;
+        document.getElementById("url").innerHTML = "" ;
+        document.getElementById("payload").innerHTML = "" ;
+        document.getElementById("zone_id").innerHTML = "" ;
+
+
+        document.getElementById("update-zone").style.display = "none";
+        document.getElementById("cancel").style.display = "none";
+        document.getElementById("add-zone").style.display = "block";
+
+        let home = document.querySelector("#home");
+        home.scrollIntoView();
+
+    }) ;
 
 
 }
