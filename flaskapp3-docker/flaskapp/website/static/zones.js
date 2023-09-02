@@ -35,7 +35,8 @@ function deleteZone(zoneId) {
 
 function updateZone1(zoneId) {
     // let elements = document.getElementsByName("fname");
-    alert('Hello' + zoneId);
+    alert('Hello ' + zoneId);
+    document.getElementById("client_name").innerHTML = zoneId ;
 
     // fetch("/delete-zone", {
     // method: "POST",
