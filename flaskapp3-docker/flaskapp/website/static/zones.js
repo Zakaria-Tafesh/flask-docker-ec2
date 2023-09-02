@@ -99,11 +99,15 @@ function updateZone2() {
 
 }
 
-function cancel2() {
+function myCancel() {
         document.getElementById("client_name").innerHTML = "" ;
+        document.getElementById("client_name").value = "" ;
         document.getElementById("url").innerHTML = "" ;
+        document.getElementById("url").value = "" ;
         document.getElementById("payload").innerHTML = "" ;
+        document.getElementById("payload").value = "" ;
         document.getElementById("zone_id").innerHTML = "" ;
+        document.getElementById("zone_id").value = "" ;
 
 
         document.getElementById("update-zone").style.display = "none";
