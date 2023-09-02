@@ -51,6 +51,7 @@ function updateZone1(zoneId) {
 
 
         document.getElementById("update-zone").style.display = "block";
+        document.getElementById("cancel").style.display = "block";
         document.getElementById("add-zone").style.display = "none";
 
         let pageBottom = document.querySelector("#page-bottom");
