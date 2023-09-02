@@ -88,9 +88,10 @@ def update_zone1():
     zone = json.loads(request.data)
     zone_id = zone['zoneId']
     zone = Zone.query.get(zone_id)
-    # if zone:
-        # if zone.user_id == current_user.id:
-        #     db.session.delete(zone)
-        #     db.session.commit()
+
+    if zone:
+        if zone.user_id == current_user.id:
+            return jsonify(zone)
+
     # return 'Zakaria'
-    return jsonify({'1': 'Zakaria'})
+    # return jsonify({'1': 'Zakaria'})
