@@ -43,11 +43,11 @@ function updateZone1(zoneId) {
     fetch("/update-zone1", {
     method: "POST",
     body: JSON.stringify({ zoneId: zoneId }),
-    }).then((_res) => {
-    alert('_res ' + _res['1']);
+    }).then(response => response.json()).then(data => {
+    alert('Hello ' + data);
+    alert('Hello ' + data['1']);
 
-    window.location.href = "/";
-    });
+    }) ;
 
 
 }
