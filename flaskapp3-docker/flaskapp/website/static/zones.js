@@ -91,8 +91,9 @@ function updateZone2() {
         document.getElementById("add-zone").style.display = "block";
 
         let home = document.querySelector("#home");
-        home.scrollIntoView();
         window.location.href = "/";
+        home.scrollIntoView();
+
     }) ;
 
 
