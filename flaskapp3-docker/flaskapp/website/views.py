@@ -92,5 +92,5 @@ def update_zone1():
         # if zone.user_id == current_user.id:
         #     db.session.delete(zone)
         #     db.session.commit()
-    return 'Zakaria'
-    # return jsonify({})
+    # return 'Zakaria'
+    return jsonify({'1': 'Zakaria'})

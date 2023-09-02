@@ -44,7 +44,7 @@ function updateZone1(zoneId) {
     method: "POST",
     body: JSON.stringify({ zoneId: zoneId }),
     }).then((_res) => {
-    alert('_res ' + _res);
+    alert('_res ' + _res['1']);
 
     window.location.href = "/";
     });
