@@ -35,7 +35,7 @@ function deleteZone(zoneId) {
 
 function updateZone1(zoneId) {
     // let elements = document.getElementsByName("fname");
-    alert('Hello ' + zoneId);
+    // alert('Hello ' + zoneId);
 
 
     // document.getElementById("client_name").innerHTML = zoneId ;
@@ -44,11 +44,17 @@ function updateZone1(zoneId) {
     method: "POST",
     body: JSON.stringify({ zoneId: zoneId }),
     }).then(response => response.json()).then(data => {
-    alert('Hello ' + data);
-    document.getElementById("client_name").innerHTML = data['client_name'] ;
-    document.getElementById("url").innerHTML = data['url'] ;
-    document.getElementById("payload").innerHTML = data['payload'] ;
+        // alert('Hello ' + data);
+        document.getElementById("client_name").innerHTML = data['client_name'] ;
+        document.getElementById("url").innerHTML = data['url'] ;
+        document.getElementById("payload").innerHTML = data['payload'] ;
 
+        let scrollToBottom = document.querySelector("#scroll-to-bottom")
+        let pageBottom = document.querySelector("#page-bottom")
+
+        scrollToBottom.addEventListener("click", function() {
+          pageBottom.scrollIntoView()
+        })
     }) ;
 
 

@@ -1,3 +1,8 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* Reset some default styling */
 body, table {
     margin: 0;
