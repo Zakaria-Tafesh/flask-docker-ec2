@@ -45,6 +45,9 @@ function updateZone1(zoneId) {
     body: JSON.stringify({ zoneId: zoneId }),
     }).then(response => response.json()).then(data => {
     alert('Hello ' + data);
+    document.getElementById("client_name").innerHTML = data['client_name'] ;
+    document.getElementById("url").innerHTML = data['url'] ;
+    document.getElementById("payload").innerHTML = data['payload'] ;
 
     }) ;
 
