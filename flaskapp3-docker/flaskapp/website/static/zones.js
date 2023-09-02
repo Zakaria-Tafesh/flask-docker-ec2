@@ -98,3 +98,21 @@ function updateZone2() {
 
 
 }
+
+function cancel() {
+        document.getElementById("client_name").innerHTML = "" ;
+        document.getElementById("url").innerHTML = "" ;
+        document.getElementById("payload").innerHTML = "" ;
+        document.getElementById("zone_id").innerHTML = "" ;
+
+
+        document.getElementById("update-zone").style.display = "none";
+        document.getElementById("cancel").style.display = "none";
+        document.getElementById("add-zone").style.display = "block";
+
+        let home = document.querySelector("#home");
+        home.scrollIntoView();
+
+
+
+}
