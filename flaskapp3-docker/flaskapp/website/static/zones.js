@@ -48,13 +48,14 @@ function updateZone1(zoneId) {
         document.getElementById("client_name").innerHTML = data['client_name'] ;
         document.getElementById("url").innerHTML = data['url'] ;
         document.getElementById("payload").innerHTML = data['payload'] ;
+        document.getElementById("zone_id").innerHTML = zoneId ;
 
 
         document.getElementById("update-zone").style.display = "block";
         document.getElementById("cancel").style.display = "block";
         document.getElementById("add-zone").style.display = "none";
 
-        let pageBottom = document.querySelector("#page-bottom");
+        let pageBottom = document.querySelector("#zone_id");
         pageBottom.scrollIntoView();
 
     }) ;

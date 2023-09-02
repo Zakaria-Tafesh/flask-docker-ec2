@@ -63,12 +63,13 @@
             <button type="submit" class="btn btn-primary" id="add-zone" style="display: block">Add Zone</button>
         </div>
         <div align="center">
-            <button type="submit" class="btn btn-primary" id="update-zone" style="display: none">Update Zone</button>
+            <button type="button" class="btn btn-primary" id="update-zone"
+                    style="display: none" onclick="updateZone1({{ zone.id }})">Update Zone</button>
             <button type="reset" class="btn btn-danger" id="cancel" style="display: none">Cancel</button>
         </div>
 
         <div align="center">
-            <button   id="page-bottom" style="visibility: hidden">page-bottom</button>
+            <button   id="zone_id" style="visibility: hidden">zone_id</button>
         </div>
 
     </form>
