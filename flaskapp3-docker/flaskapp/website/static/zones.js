@@ -50,8 +50,11 @@ function updateZone1(zoneId) {
         document.getElementById("payload").innerHTML = data['payload'] ;
 
         let pageBottom = document.querySelector("#page-bottom");
+        pageBottom.scrollIntoView();
 
-          pageBottom.scrollIntoView();
+        document.getElementById("update-zone").style.display = "block";
+        document.getElementById("add-zone").style.display = "none";
+
     }) ;
 
 
