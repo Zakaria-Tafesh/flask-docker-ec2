@@ -91,7 +91,9 @@ def update_zone1():
 
     if zone:
         if zone.user_id == current_user.id:
-            return jsonify(zone)
+            return jsonify({'client_name': zone.client_name,
+                            'url': zone.url,
+                            'payload': zone.payload})
 
     # return 'Zakaria'
     # return jsonify({'1': 'Zakaria'})

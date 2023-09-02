@@ -45,7 +45,6 @@ function updateZone1(zoneId) {
     body: JSON.stringify({ zoneId: zoneId }),
     }).then(response => response.json()).then(data => {
     alert('Hello ' + data);
-    alert('Hello ' + data['1']);
 
     }) ;
 
