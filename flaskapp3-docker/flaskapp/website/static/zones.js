@@ -45,10 +45,10 @@ function updateZone1(zoneId) {
     body: JSON.stringify({ zoneId: zoneId }),
     }).then(response => response.json()).then(data => {
         // alert('Hello ' + data);
-        document.getElementById("client_name").innerHTML = data['client_name'] ;
-        document.getElementById("url").innerHTML = data['url'] ;
-        document.getElementById("payload").innerHTML = data['payload'] ;
-        document.getElementById("zone_id").innerHTML = zoneId ;
+        document.getElementById("client_name").value = data['client_name'] ;
+        document.getElementById("url").value = data['url'] ;
+        document.getElementById("payload").value = data['payload'] ;
+        document.getElementById("zone_id").value = zoneId ;
 
 
         document.getElementById("update-zone").style.display = "block";
@@ -80,10 +80,10 @@ function updateZone2() {
     }),
     }).then(response => response.json()).then(data => {
         // alert('Hello ' + data);
-        document.getElementById("client_name").innerHTML = "" ;
-        document.getElementById("url").innerHTML = "" ;
-        document.getElementById("payload").innerHTML = "" ;
-        document.getElementById("zone_id").innerHTML = "" ;
+        document.getElementById("client_name").value = "" ;
+        document.getElementById("url").value = "" ;
+        document.getElementById("payload").value = "" ;
+        document.getElementById("zone_id").value = "" ;
 
 
         document.getElementById("update-zone").style.display = "none";
@@ -100,13 +100,13 @@ function updateZone2() {
 }
 
 function myCancel() {
-        document.getElementById("client_name").innerHTML = "" ;
+        // document.getElementById("client_name").innerHTML = "" ;
         document.getElementById("client_name").value = "" ;
-        document.getElementById("url").innerHTML = "" ;
+        // document.getElementById("url").innerHTML = "" ;
         document.getElementById("url").value = "" ;
-        document.getElementById("payload").innerHTML = "" ;
+        // document.getElementById("payload").innerHTML = "" ;
         document.getElementById("payload").value = "" ;
-        document.getElementById("zone_id").innerHTML = "" ;
+        // document.getElementById("zone_id").innerHTML = "" ;
         document.getElementById("zone_id").value = "" ;
 
 
