@@ -68,7 +68,7 @@ function updateZone2() {
     let client_name = document.getElementById("client_name").value;
     let url = document.getElementById("url").value;
     let payload = document.getElementById("payload").value;
-    alert('Zone : ' + zone_id + client_name + url +  payload);
+    // alert('Zone : ' + zone_id + client_name + url +  payload);
 
     fetch("/update-zone2", {
     method: "POST",
@@ -79,7 +79,7 @@ function updateZone2() {
 
     }),
     }).then(response => response.json()).then(data => {
-            alert('Zone : ');
+            // alert('Zone : ');
 
         // alert('Hello ' + data);
         document.getElementById("client_name").value = "" ;
