@@ -46,9 +46,9 @@ def zones_page():
                             url=url,
                             user_id=current_user.id
                             )
-            logger.info(str(client_name))
-            logger.info(str(payload))
-            logger.info(str(new_zone))
+            # logger.info(str(client_name))
+            # logger.info(str(payload))
+            # logger.info(str(new_zone))
             db.session.add(new_zone)
             db.session.commit()
             logger.info('Zone created')
@@ -115,7 +115,7 @@ def update_zone2():
     payload = zone['payload']
 
     zone = Zone.query.get(zone_id)
-    logger.info(f'zone {zone}')
+    logger.info(f'zone : ')
 
     if zone:
 
