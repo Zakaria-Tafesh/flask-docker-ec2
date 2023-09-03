@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note, Zone
 from . import db
-
+from utils.logger import logger
 views = Blueprint('views', __name__)
 
 
@@ -46,12 +46,12 @@ def zones_page():
                             url=url,
                             user_id=current_user.id
                             )
-            print(client_name)
-            print(payload)
-            print(new_zone)
+            logger.info(str(client_name))
+            logger.info(str(payload))
+            logger.info(str(new_zone))
             db.session.add(new_zone)
             db.session.commit()
-            print('Zone created')
+            logger.info('Zone created')
 
             flash('Zone created!', category='success')
 
@@ -104,18 +104,18 @@ def update_zone1():
 
 @views.route('/update-zone2', methods=['POST'])
 def update_zone2():
-    print('update_zone2')
+    logger.info('update_zone2')
 
     zone = json.loads(request.data)
     zone_id = zone['zone_id']
-    print('zone_id', zone_id)
+    logger.info(f'zone_id {zone_id}' )
 
     client_name = zone['client_name']
     url = zone['url']
     payload = zone['payload']
 
     zone = Zone.query.get(zone_id)
-    print('zone', zone)
+    logger.info(f'zone {zone}')
 
     if zone:
 
