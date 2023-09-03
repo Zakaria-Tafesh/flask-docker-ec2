@@ -18,6 +18,16 @@ class Zone(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+    def __repr__(self):
+        return {'id': self.id,
+                'client_name': self.client_name,
+                'url': self.url,
+                'payload': self.payload,
+                'date': self.date,
+                'user_id': self.user_id,
+
+                }
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
