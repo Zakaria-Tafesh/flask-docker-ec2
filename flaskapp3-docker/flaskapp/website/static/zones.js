@@ -79,6 +79,8 @@ function updateZone2() {
 
     }),
     }).then(response => response.json()).then(data => {
+            alert('Zone : ');
+
         // alert('Hello ' + data);
         document.getElementById("client_name").value = "" ;
         document.getElementById("url").value = "" ;

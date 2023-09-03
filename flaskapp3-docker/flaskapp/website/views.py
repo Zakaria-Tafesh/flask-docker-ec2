@@ -100,15 +100,21 @@ def update_zone1():
 
 @views.route('/update-zone2', methods=['POST'])
 def update_zone2():
+    print('update_zone2')
+
     zone = json.loads(request.data)
     zone_id = zone['zone_id']
+    print('zone_id', zone_id)
+
     client_name = zone['client_name']
     url = zone['url']
     payload = zone['payload']
 
     zone = Zone.query.get(zone_id)
+    print('zone', zone)
 
     if zone:
+
         if zone.user_id == current_user.id:
             zone.client_name = client_name
             zone.url = url
