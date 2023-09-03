@@ -93,10 +93,10 @@ def update_zone1():
     zone = Zone.query.get(zone_id)
 
     if zone:
-        if zone.user_id == current_user.id:
-            return jsonify({'client_name': zone.client_name,
-                            'url': zone.url,
-                            'payload': zone.payload})
+        # if zone.user_id == current_user.id:
+        return jsonify({'client_name': zone.client_name,
+                        'url': zone.url,
+                        'payload': zone.payload})
 
     # return 'Zakaria'
     # return jsonify({'1': 'Zakaria'})
