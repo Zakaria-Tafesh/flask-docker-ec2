@@ -10,4 +10,7 @@ COPY flaskapp /opt/
 RUN pip3 install -r requirements.txt
 WORKDIR /opt/
 
+ENV TZ=Canada/Mountain
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 CMD ["gunicorn3", "-b", "0.0.0.0:7777", "app:app", "--workers=5"]
