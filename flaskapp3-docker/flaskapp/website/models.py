@@ -19,14 +19,14 @@ class Zone(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return {'id': self.id,
+        return str({'id': self.id,
                 'client_name': self.client_name,
                 'url': self.url,
                 'payload': self.payload,
                 'date': self.date,
                 'user_id': self.user_id,
 
-                }
+                })
 
 
 class User(db.Model, UserMixin):
