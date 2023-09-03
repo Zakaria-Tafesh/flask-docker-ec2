@@ -46,9 +46,9 @@ def zones_page():
                             url=url,
                             user_id=current_user.id
                             )
-            # logger.info(str(client_name))
-            # logger.info(str(payload))
-            # logger.info(str(new_zone))
+            logger.info(str(client_name))
+            logger.info(str(payload))
+            logger.info(str(new_zone))
             db.session.add(new_zone)
             db.session.commit()
             logger.info('Zone created')
@@ -88,9 +88,12 @@ def delete_zone():
 
 @views.route('/update-zone1', methods=['POST'])
 def update_zone1():
+    logger.info('update_zone1')
+
     zone = json.loads(request.data)
     zone_id = zone['zoneId']
     zone = Zone.query.get(zone_id)
+    logger.info(f'zone_id {zone_id}')
 
     if zone:
         # if zone.user_id == current_user.id:
@@ -108,14 +111,14 @@ def update_zone2():
 
     zone = json.loads(request.data)
     zone_id = zone['zone_id']
-    logger.info(f'zone_id {zone_id}' )
+    logger.info(f'zone_id {zone_id}')
 
     client_name = zone['client_name']
     url = zone['url']
     payload = zone['payload']
 
     zone = Zone.query.get(zone_id)
-    logger.info(f'zone : ')
+    logger.info(f'zone : {zone}')
 
     if zone:
 
