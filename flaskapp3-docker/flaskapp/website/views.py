@@ -101,6 +101,7 @@ def update_zone1():
     # return 'Zakaria'
     # return jsonify({'1': 'Zakaria'})
 
+
 @views.route('/update-zone2', methods=['POST'])
 def update_zone2():
     print('update_zone2')
@@ -118,11 +119,11 @@ def update_zone2():
 
     if zone:
 
-        if zone.user_id == current_user.id:
-            zone.client_name = client_name
-            zone.url = url
-            zone.payload = payload
-            db.session.commit()
-            return jsonify({'client_name': zone.client_name,
-                            'url': zone.url,
-                            'payload': zone.payload})
+        # if zone.user_id == current_user.id:
+        zone.client_name = client_name
+        zone.url = url
+        zone.payload = payload
+        db.session.commit()
+        return jsonify({'client_name': zone.client_name,
+                        'url': zone.url,
+                        'payload': zone.payload})
