@@ -54,8 +54,11 @@ def zones_page():
             print('Zone created')
 
             flash('Zone created!', category='success')
-    print(current_user.zones)
-    return render_template('zones.html', user=current_user, zones=current_user.zones)
+
+    all_zones = Zone.query.all()
+
+    return render_template('zones.html', user=current_user, zones=all_zones)
+    # return render_template('zones.html', user=current_user, zones=current_user.zones)
 
 
 
