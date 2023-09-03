@@ -20,6 +20,8 @@ services:
     restart: always
     volumes:
       - /home/ubuntu/shared_docker/:/opt/shared_docker/
+      - /etc/localtime:/etc/localtime:ro
+
     network_mode: host
 
   nginx:
