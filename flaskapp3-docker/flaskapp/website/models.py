@@ -36,3 +36,14 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note')
     zones = db.relationship('Zone')
+
+    def __repr__(self):
+        return str({'id': self.id,
+                'email': self.email,
+                'password': self.password,
+                'first_name': self.first_name,
+                'notes': self.notes,
+                'zones': self.zones,
+
+                })
+
