@@ -76,13 +76,17 @@ def update_zone(index):
 
 @views.route('/delete-zone', methods=['POST'])
 def delete_zone():
+    logger.info('delete_zone')
+
     zone = json.loads(request.data)
     zone_id = zone['zoneId']
+    logger.info(f'zoneId {zone_id}')
+
     zone = Zone.query.get(zone_id)
     if zone:
-        if zone.user_id == current_user.id:
-            db.session.delete(zone)
-            db.session.commit()
+        # if zone.user_id == current_user.id:
+        db.session.delete(zone)
+        db.session.commit()
     return jsonify({})
 
 
