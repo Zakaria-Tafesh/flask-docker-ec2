@@ -22,7 +22,7 @@
                         {% if not zone.url %}
                             None
                         {% else %}
-                          <a href="{{ zone.url }}">
+                          <a href="{{ zone.url }}" target="_blank" title="{{ zone.url}}">
                             <div style="height:100%;width:100%">
                               {{ zone.url[:10] }}
                             </div>
