@@ -33,7 +33,7 @@
 
                      </td>
                     <td>{{ zone.payload[:10] }}</td>
-                    <td>{{ zone.user_id }}</td>
+                    <td>{{ zone.user.first_name }}</td>
 
                     <td >
                         <button class="edit-button" onclick="updateZone1({{ zone.id }})">Edit</button>
