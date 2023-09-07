@@ -3,7 +3,8 @@
 }
 
 #first_name {
-    margin-left: auto !important;
+    position: absolute;
+    right: 0;
 }
 
 html {
