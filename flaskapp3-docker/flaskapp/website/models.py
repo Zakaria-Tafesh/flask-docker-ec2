@@ -18,6 +18,7 @@ class Zone(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User')  # Add this line
+    # user = db.relationship('User', back_populates='zones')  # Add this line
 
     def __repr__(self):
         return str({'id': self.id,
@@ -26,6 +27,7 @@ class Zone(db.Model):
                 'payload': self.payload,
                 'date': self.date,
                 'user_id': self.user_id,
+                'first_name': self.user.first_name,
 
                 })
 
