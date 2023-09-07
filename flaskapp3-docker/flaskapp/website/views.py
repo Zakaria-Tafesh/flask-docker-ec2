@@ -1,7 +1,7 @@
 import json
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, Zone
+from .models import Note, Zone, User
 from . import db
 from .utils.logger import logger
 views = Blueprint('views', __name__)
@@ -56,7 +56,8 @@ def zones_page():
             flash('Zone created!', category='success')
 
     # all_zones = Zone.query.all()
-    all_zones = Zone.query.options(db.joinedload('user')).all()
+    # all_zones = Zone.query.options(db.joinedload('user')).all()
+    all_zones = Zone.query.join(User).filter(User.id == Zone.user_id).all()
 
     return render_template('zones.html', user=current_user, zones=all_zones)
     # return render_template('zones.html', user=current_user, zones=current_user.zones)
