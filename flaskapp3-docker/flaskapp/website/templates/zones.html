@@ -9,6 +9,7 @@
                 <th>Client Name</th>
                 <th>URL</th>
                 <th>Payload</th>
+                <th>Created By</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
 
                      </td>
                     <td>{{ zone.payload[:10] }}</td>
+                    <td>{{ zone.user_id }}</td>
 
                     <td >
                         <button class="edit-button" onclick="updateZone1({{ zone.id }})">Edit</button>
