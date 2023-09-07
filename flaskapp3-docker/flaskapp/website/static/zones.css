@@ -2,6 +2,10 @@
     margin-left: auto !important;
 }
 
+#first_name {
+    margin-left: auto !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
