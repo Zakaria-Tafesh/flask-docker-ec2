@@ -1,3 +1,6 @@
+.move-right {
+    margin-left: auto !important;
+}
 
 html {
   scroll-behavior: smooth;
