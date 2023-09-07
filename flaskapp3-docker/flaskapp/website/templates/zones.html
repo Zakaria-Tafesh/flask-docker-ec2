@@ -11,6 +11,7 @@
                 <th>Payload</th>
                 <th>Created By</th>
                 <th>Created At</th>
+                <th>Last Run At</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -35,6 +36,7 @@
                      </td>
                     <td>{{ zone.payload[:10] }}</td>
                     <td>{{ zone.user.first_name  }}</td>
+                    <td>{{ zone.date  }}</td>
                     <td>{{ zone.date  }}</td>
 
                     <td >
