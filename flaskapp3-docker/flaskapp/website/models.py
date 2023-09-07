@@ -8,6 +8,7 @@ class Note(db.Model):
     data = db.Column(db.String(10_000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    zones = db.relationship('Zone', back_populates='user')
 
 
 class Zone(db.Model):
@@ -17,8 +18,8 @@ class Zone(db.Model):
     payload = db.Column(db.String(20_000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User')  # Add this line
-    # user = db.relationship('User', back_populates='zones')  # Add this line
+    # user = db.relationship('User')  # Add this line
+    user = db.relationship('User', back_populates='zones')  # Add this line
 
     def __repr__(self):
         return str({'id': self.id,
