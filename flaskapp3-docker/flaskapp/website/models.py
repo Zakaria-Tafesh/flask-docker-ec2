@@ -8,7 +8,6 @@ class Note(db.Model):
     data = db.Column(db.String(10_000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    zones = db.relationship('Zone', back_populates='user')
 
 
 class Zone(db.Model):
@@ -39,7 +38,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note')
-    zones = db.relationship('Zone')
+    # zones = db.relationship('Zone')
+    zones = db.relationship('Zone', back_populates='user')
 
     def __repr__(self):
         return str({'id': self.id,
