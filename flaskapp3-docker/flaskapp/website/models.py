@@ -26,8 +26,7 @@ class Zone(db.Model):
                 'url': self.url,
                 'payload': self.payload,
                 'date': self.date,
-                'user_id': self.user_id,
-                'first_name': self.user.first_name,
+                'user_id': self.user_id
 
                 })
 
