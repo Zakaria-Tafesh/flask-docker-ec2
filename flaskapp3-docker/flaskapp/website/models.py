@@ -16,7 +16,7 @@ class Zone(db.Model):
     url = db.Column(db.String(4000))
     payload = db.Column(db.String(20_000))
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
-    last_run_at = db.Column(db.DateTime(timezone=True))
+    # last_run_at = db.Column(db.DateTime(timezone=True))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     # user = db.relationship('User')  # Add this line
     user = db.relationship('User', back_populates='zones')  # Add this line
@@ -27,7 +27,7 @@ class Zone(db.Model):
                 'url': self.url,
                 'payload': self.payload,
                 'created_at': self.created_at,
-                'last_run_at': self.last_run_at,
+                # 'last_run_at': self.last_run_at,
                 'user_id': self.user_id
 
                 })
