@@ -11,7 +11,7 @@
                 <th>Payload</th>
                 <th>Created By</th>
                 <th>Created At</th>
-{#                <th>Last Run At</th>#}
+                <th>Last Run At</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,7 +37,8 @@
                     <td>{{ zone.payload[:10] }}</td>
                     <td>{{ zone.user.first_name  }}</td>
                     <td>{{ zone.created_at  }}</td>
-{#                    <td>{{ zone.last_run_at  }}</td>#}
+
+                    <td>{{ zone.last_run_at  }}</td>
 
                     <td >
                         <button class="edit-button" onclick="updateZone1({{ zone.id }})">Edit</button>
