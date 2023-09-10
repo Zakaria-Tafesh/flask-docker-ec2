@@ -1,22 +1,10 @@
 version: '3'
 
 services:
+
   flaskapp:
-    build: ./flaskapp-docker
+    build: flaskapp-docker
     container_name: flaskapp
-    restart: always
-    network_mode: host
-
-
-  flaskapp2:
-    build: ./flaskapp2-docker
-    container_name: flaskapp2
-    restart: always
-    network_mode: host
-
-  flaskapp3:
-    build: ./flaskapp3-docker
-    container_name: flaskapp3
     restart: always
     volumes:
       - /home/ubuntu/shared_docker/:/opt/shared_docker/
@@ -32,4 +20,13 @@ services:
     restart: always
     network_mode: host
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+  scraper_2023:
+    build: ./scraper_docker
+    container_name: scraper_2023
+    restart: always
+    network_mode: host
+    volumes:
+      - /home/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
