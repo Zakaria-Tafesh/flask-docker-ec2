@@ -5,8 +5,8 @@ from utils.google_sheet import GoogleSheet
 from utils.utils import get_date_today
 from utils.db import MySQLite
 import time
-# import schedule
-# from pytz import timezone
+import schedule
+from pytz import timezone
 from utils.logger import logger
 
 
@@ -43,23 +43,23 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
 
-    # schedule.every().day.at(RUN_AT, timezone("Canada/Mountain")).do(main)
-    # schedule.every(10).seconds.do(main)
-    # print(datetime.datetime.now(), repr(s))
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(1)
+    schedule.every().day.at(RUN_AT, timezone("Canada/Mountain")).do(main)
+    schedule.every(10).seconds.do(main)
+    logger.info(datetime.datetime.now(), repr(s))
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-    # while 1:
-    #     n = schedule.idle_seconds()
-    #     logger.info('Sleep: ' + time.strftime("%H:%M:%S", time.gmtime(n)))
-    #     if n is None:
-    #         # no more jobs
-    #         print('n is None')
-    #         break
-    #     elif n > 0:
-    #         # sleep exactly the right amount of time
-    #         time.sleep(n)
-    #     schedule.run_pending()
+    while 1:
+        n = schedule.idle_seconds()
+        logger.info('Sleep: ' + time.strftime("%H:%M:%S", time.gmtime(n)))
+        if n is None:
+            # no more jobs
+            logger.info('n is None')
+            break
+        elif n > 0:
+            # sleep exactly the right amount of time
+            time.sleep(n)
+        schedule.run_pending()
