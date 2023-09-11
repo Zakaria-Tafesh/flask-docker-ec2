@@ -9,4 +9,4 @@ COPY scraper_2023 /opt/
 RUN pip3 install -r requirements.txt
 WORKDIR /opt/
 
-CMD ["python3", "scraper_2023.main.py"]
+CMD ["python3", "scraper_2023/main.py"]
