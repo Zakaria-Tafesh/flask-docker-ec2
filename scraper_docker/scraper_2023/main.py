@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     schedule.every().day.at(RUN_AT, timezone("Canada/Mountain")).do(main)
     schedule.every(10).seconds.do(main)
-    logger.info(datetime.datetime.now(), repr(s))
+    logger.info(str(datetime.datetime.now()))
     while True:
         schedule.run_pending()
         time.sleep(1)
