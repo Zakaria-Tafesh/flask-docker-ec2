@@ -7,11 +7,12 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from input.config import ZONES_FOLDER_ID, test_properties, COLUMNS_NEEDED, PATH_PARENT_PARENT
+from input.config import ZONES_FOLDER_ID, test_properties, COLUMNS_NEEDED, PATH_SHARED_DOCKER
 import pandas as pd
 from .logger import logger
 
-PATH_CREDS_FOLDER = os.path.join(PATH_PARENT_PARENT, 'creds')
+
+PATH_CREDS_FOLDER = os.path.join(PATH_SHARED_DOCKER, 'creds')
 PATH_CREDS_JSON = os.path.join(PATH_CREDS_FOLDER, 'credentials.json')
 PATH_TOKEN_JSON = os.path.join(PATH_CREDS_FOLDER, 'token.json')
 

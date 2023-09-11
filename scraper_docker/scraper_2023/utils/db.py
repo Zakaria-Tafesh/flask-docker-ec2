@@ -1,11 +1,11 @@
 import os
 import sqlite3
+from input.config import PATH_SHARED_DOCKER
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-shared_docker = os.path.join('/', 'opt', 'shared_docker')
 DB_NAME = 'database.db'
-DB_PATH = os.path.join(shared_docker, DB_NAME)
+DB_PATH = os.path.join(PATH_SHARED_DOCKER, DB_NAME)
 
 
 class MySQLite:
