@@ -3,7 +3,7 @@ import sqlite3
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-shared_docker = os.path.join('/', 'home', 'ubuntu', 'shared_docker')
+shared_docker = os.path.join('/', 'opt', 'shared_docker')
 DB_NAME = 'database.db'
 DB_PATH = os.path.join(shared_docker, DB_NAME)
 
