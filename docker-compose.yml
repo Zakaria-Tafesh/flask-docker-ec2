@@ -30,5 +30,3 @@ services:
     volumes:
       - /home/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
-    env_file:
-      - .env
