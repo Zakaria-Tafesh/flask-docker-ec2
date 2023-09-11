@@ -9,4 +9,4 @@ COPY scraper_2023 /opt/
 RUN pip3 install -r requirements.txt
 WORKDIR /opt/
 
-CMD ["gunicorn3", "-b", "0.0.0.0:7777", "app:app", "--workers=5"]
+CMD ["python3", "scraper_2023.main.py"]
