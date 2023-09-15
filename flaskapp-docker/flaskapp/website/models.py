@@ -16,6 +16,8 @@ class Zone(db.Model):
     url = db.Column(db.String(4000))
     payload = db.Column(db.String(20_000))
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), default=func.now(), onupdate=func.now())
+
     # last_run_at = db.Column(db.DateTime(timezone=True))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     # user = db.relationship('User')  # Add this line
