@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from ..input.config import PATH_SHARED_DOCKER
+from scraper_docker.scraper_2023.input.config import PATH_SHARED_DOCKER
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
