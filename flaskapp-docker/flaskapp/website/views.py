@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 from .models import Note, Zone, User
 from . import db
 from .utils.logger import logger
-from input.config import ZONES_FOLDER_ID
+# from input.config import ZONES_FOLDER_ID
 
 views = Blueprint('views', __name__)
 
@@ -59,7 +59,7 @@ def zones_page():
     # all_zones = Zone.query.all()
     # all_zones = Zone.query.options(db.joinedload('user')).all()
     all_zones = Zone.query.join(User).filter(User.id == Zone.user_id).all()
-    zones_drive_url = "https://drive.google.com/drive/folders/" + ZONES_FOLDER_ID
+    zones_drive_url = "https://drive.google.com/drive/folders/"
     return render_template('zones.html', user=current_user, zones=all_zones, zones_drive_url=zones_drive_url)
     # return render_template('zones.html', user=current_user, zones=current_user.zones)
 
