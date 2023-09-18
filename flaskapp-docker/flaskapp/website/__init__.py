@@ -27,6 +27,8 @@ DB_USER = os.getenv('MYSQL_USER')
 DB_PASSWORD = os.getenv('MYSQL_PASSWORD')
 DB_NAME = os.getenv('MYSQL_DATABASE')
 
+print(f'mysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
+
 
 def create_app():
     app = Flask(__name__)
