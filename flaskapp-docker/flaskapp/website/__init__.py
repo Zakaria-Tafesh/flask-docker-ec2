@@ -6,7 +6,10 @@ from flask_login import LoginManager
 basedir = os.path.abspath(os.path.dirname(__file__))
 shared_docker = os.path.join('/', 'opt', 'shared_docker')
 db = SQLAlchemy()
-DB_NAME = 'database.db'
+# DB_NAME = 'database.db'
+
+
+
 # Get environment variables
 db_user = os.environ.get('MYSQL_USER')
 db_password = os.environ.get('MYSQL_PASSWORD')
@@ -16,13 +19,23 @@ db_host = 'mysql'  # This should match the service name in your Docker Compose f
 
 
 
+DB_HOST = 'mysql'
+DB_PORT = '3306'  # Assuming the default MySQL port
+
+# The other database configuration options (username, password, database name) remain the same
+DB_USER = os.getenv('MYSQL_USER')
+DB_PASSWORD = os.getenv('MYSQL_PASSWORD')
+DB_NAME = os.getenv('MYSQL_DATABASE')
+
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = secret_key
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(shared_docker, 'database.db')
     # Construct the database URI
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{db_user}:{db_password}@{db_host}/{db_name}'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{db_user}:{db_password}@{db_host}/{db_name}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
     db.init_app(app)
 
 
