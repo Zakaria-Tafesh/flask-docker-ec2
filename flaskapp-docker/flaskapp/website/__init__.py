@@ -24,7 +24,7 @@ DB_PORT = '3306'  # Assuming the default MySQL port
 
 # The other database configuration options (username, password, database name) remain the same
 DB_USER = os.getenv('MYSQL_USER')
-DB_USER = 'zak'
+# DB_USER = 'zak'
 DB_PASSWORD = os.getenv('MYSQL_PASSWORD')
 DB_NAME = os.getenv('MYSQL_DATABASE')
 
