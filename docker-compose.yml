@@ -17,6 +17,8 @@ services:
       - mysql_data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
 
+  command: ["mysqld"]
+
 #  flaskapp:
 #    build: flaskapp-docker
 #    container_name: flaskapp
