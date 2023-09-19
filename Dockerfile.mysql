@@ -1,17 +1,10 @@
-# Use an official MySQL runtime as a parent image
 FROM mysql:5.7
 
-# Environment variables for MySQL configuration
-ENV MYSQL_ROOT_PASSWORD=root_password
-ENV MYSQL_DATABASE=your_database
-ENV MYSQL_USER=your_user
-ENV MYSQL_PASSWORD=your_password
+# Copy the custom entrypoint script
+COPY entrypoint.sh /entrypoint.sh
 
-# Copy the SQL script to initialize the database
-COPY ./generate_sql.sh /docker-entrypoint-initdb.d/
+# Make the entrypoint script executable
+RUN chmod +x /entrypoint.sh
 
-# Expose the MySQL port
-EXPOSE 3306
-
-# Start the MySQL service
-CMD ["mysqld"]
+# Use the custom entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]

@@ -54,7 +54,9 @@ services:
 #      - /etc/localtime:/etc/localtime:ro
 
   mysql:
-    image: mysql:5.7
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile.mysql
     container_name: flask-mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -65,8 +67,7 @@ services:
       - "3306:3306"
     volumes:
       - ./mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    command: --init-file /docker-entrypoint-initdb.d/init.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/init_template.sql
     networks:
       - mynetwork
 
