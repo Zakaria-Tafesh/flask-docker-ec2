@@ -1,0 +1,15 @@
+# Use a lightweight base image
+FROM alpine:latest
+
+# Install any necessary dependencies for your script here
+# For example, if your script requires bash, you can install it like this:
+# RUN apk --update add bash
+
+# Copy your script into the container
+COPY generate_sql.sh /generate_sql.sh
+
+# Set execute permissions on the script
+RUN chmod +x /generate_sql.sh
+
+# Start the script when the container starts
+CMD ["/generate_sql.sh"]

@@ -1,21 +1,21 @@
 version: '3'
 
 services:
-  mysql:
-    build:
-      context: .
-      dockerfile: Dockerfile.mysql  # Use the custom Dockerfile for MySQL
-    container_name: flask-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    network_mode: host
-
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - /etc/localtime:/etc/localtime:ro
+#  mysql:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.mysql  # Use the custom Dockerfile for MySQL
+#    container_name: flask-mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#      MYSQL_DATABASE: ${MYSQL_DATABASE}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#    network_mode: host
+#
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+#      - /etc/localtime:/etc/localtime:ro
 
 #  flaskapp:
 #    build: flaskapp-docker
@@ -34,25 +34,57 @@ services:
 #    depends_on:
 #      - mysql
 
-  nginx:
-    build: ./nginx
-    container_name: nginx
+#  nginx:
+#    build: ./nginx
+#    container_name: nginx
+#    environment:
+#      - SERVER_NAME=0.0.0.0
+#    restart: always
+#    network_mode: host
+#    volumes:
+#      - /etc/localtime:/etc/localtime:ro
+#
+#  scraper_2023:
+#    build: ./scraper_docker
+#    container_name: scraper_2023
+#    restart: always
+#    network_mode: host
+#    volumes:
+#      - /home/ubuntu/shared_docker/:/opt/shared_docker/
+#      - /etc/localtime:/etc/localtime:ro
+
+  flask-mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    ports:
+      - "3306:3306"
     environment:
-      - SERVER_NAME=0.0.0.0
-    restart: always
-    network_mode: host
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-
-  scraper_2023:
-    build: ./scraper_docker
-    container_name: scraper_2023
+      - ./mysql:/var/lib/mysql
+    networks:
+      - mynetwork
     restart: always
-    network_mode: host
-    volumes:
-      - /home/ubuntu/shared_docker/:/opt/shared_docker/
-      - /etc/localtime:/etc/localtime:ro
 
+  script-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.scriptrunner
+    volumes:
+      - ./generate_sql.sh:/generate_sql.sh
+    networks:
+      - mynetwork
+    depends_on:
+      - flask-mysql
+    command: ["./generate_sql.sh"]
+    restart: always
+
+networks:
+  mynetwork:
 
 
 
