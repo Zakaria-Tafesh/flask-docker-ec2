@@ -9,7 +9,7 @@ set +o allexport
 sed -e "s|%MYSQL_DATABASE%|${MYSQL_DATABASE}|g" \
     -e "s|%MYSQL_USER%|${MYSQL_USER}|g" \
     -e "s|%MYSQL_PASSWORD%|${MYSQL_PASSWORD}|g" \
-    grant_privileges_template.sql > grant_privileges.sql
+    /grant_privileges_template.sql > /grant_privileges.sql
 
 # Clean up
-rm grant_privileges_template.sql
+rm /grant_privileges_template.sql
