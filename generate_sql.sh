@@ -2,7 +2,7 @@
 
 # Load environment variables from .env file
 set -o allexport
-source .env
+#source .env
 set +o allexport
 
 # Replace placeholders in the template SQL file and save it as grant_privileges.sql
