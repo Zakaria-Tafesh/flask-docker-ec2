@@ -1,7 +1,7 @@
 FROM mysql:5.7
 
 # Copy the custom entrypoint script
-COPY mysql/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 # Grant execute permission to the script
 RUN chmod +x /entrypoint.sh
