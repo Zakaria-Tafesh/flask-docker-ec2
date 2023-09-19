@@ -1,11 +1,10 @@
 FROM mysql:5.7
 
 # Copy the custom entrypoint script
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /docker-entrypoint-initdb.d/entrypoint.sh
 
 # Grant execute permission to the script
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /docker-entrypoint-initdb.d/entrypoint.sh
 
 # Set the custom entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
-
+ENTRYPOINT ["/docker-entrypoint-initdb.d/entrypoint.sh"]
