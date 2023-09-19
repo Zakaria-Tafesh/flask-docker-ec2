@@ -1,6 +1,21 @@
 version: '3'
 
 services:
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql  # Use the custom Dockerfile for MySQL
+    container_name: flask-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    network_mode: host
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
 
   flaskapp:
     build: flaskapp-docker
@@ -39,21 +54,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
 
-  mysql:
-    build:
-      context: .
-      dockerfile: Dockerfile.mysql  # Use the custom Dockerfile for MySQL
-    container_name: flask-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    network_mode: host
-
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - /etc/localtime:/etc/localtime:ro
 
 
 volumes:
