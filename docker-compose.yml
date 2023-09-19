@@ -17,22 +17,22 @@ services:
       - mysql_data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
 
-  flaskapp:
-    build: flaskapp-docker
-    container_name: flaskapp
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    network_mode: host
-    volumes:
-      - /home/ubuntu/shared_docker/:/opt/shared_docker/
-      - /etc/localtime:/etc/localtime:ro
-
-    depends_on:
-      - mysql
+#  flaskapp:
+#    build: flaskapp-docker
+#    container_name: flaskapp
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#      MYSQL_DATABASE: ${MYSQL_DATABASE}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#    network_mode: host
+#    volumes:
+#      - /home/ubuntu/shared_docker/:/opt/shared_docker/
+#      - /etc/localtime:/etc/localtime:ro
+#
+#    depends_on:
+#      - mysql
 
   nginx:
     build: ./nginx
