@@ -18,4 +18,4 @@ ENV MYSQL_USER=${MYSQL_USER}
 ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 # Execute the generate_sql.sh script in the background
-CMD ["/bin/bash", "-c", "/generate_sql.sh & mysqld"]
+CMD ["/bin/bash", "-c", "/generate_sql.sh & exec mysqld"]
