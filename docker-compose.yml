@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-
+    network_mode: host
     volumes:
       - /home/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
@@ -51,6 +51,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
+    network_mode: host
+
     volumes:
       - mysql_data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
