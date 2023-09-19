@@ -1,21 +1,17 @@
-# Use the official MySQL image as the base image
+# Use an official MySQL runtime as a parent image
 FROM mysql:5.7
 
-# Copy the SQL script and the entrypoint script into the container
-COPY generate_sql.sh /generate_sql.sh
-COPY grant_privileges_template.sql /grant_privileges_template.sql
+# Environment variables for MySQL configuration
+ENV MYSQL_ROOT_PASSWORD=root_password
+ENV MYSQL_DATABASE=your_database
+ENV MYSQL_USER=your_user
+ENV MYSQL_PASSWORD=your_password
 
-# Set execute permissions on the entrypoint script
-RUN chmod +x /generate_sql.sh
+# Copy the SQL script to initialize the database
+COPY your_init_script.sql /docker-entrypoint-initdb.d/
 
-# Define the entrypoint script as the main MySQL server process
-ENTRYPOINT ["mysqld"]
+# Expose the MySQL port
+EXPOSE 3306
 
-# Set environment variables for MySQL
-ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-ENV MYSQL_DATABASE=${MYSQL_DATABASE}
-ENV MYSQL_USER=${MYSQL_USER}
-ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
-
-# Execute the generate_sql.sh script in the background
-CMD ["/bin/bash", "-c", "/generate_sql.sh & exec mysqld"]
+# Start the MySQL service
+CMD ["mysqld"]

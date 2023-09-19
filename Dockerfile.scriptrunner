@@ -2,8 +2,7 @@
 FROM alpine:latest
 
 # Install any necessary dependencies for your script here
-# For example, if your script requires bash, you can install it like this:
-# RUN apk --update add bash
+RUN apk --update add bash  # Install Bash if needed
 
 # Copy your script into the container
 COPY generate_sql.sh /generate_sql.sh
