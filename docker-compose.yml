@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
 #  mysql:
@@ -53,35 +53,21 @@ services:
 #      - /home/ubuntu/shared_docker/:/opt/shared_docker/
 #      - /etc/localtime:/etc/localtime:ro
 
-  flask-mysql:
-    build:
-      context: .
-      dockerfile: Dockerfile.mysql
-    ports:
-      - "3306:3306"
+  mysql:
+    image: mysql:5.7
+    container_name: flask-mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
     networks:
       - mynetwork
-    restart: always
-
-  script-runner:
-    build:
-      context: .
-      dockerfile: Dockerfile.scriptrunner
-    volumes:
-      - ./generate_sql.sh:/generate_sql.sh
-    networks:
-      - mynetwork
-    depends_on:
-      - flask-mysql
-    command: ["./generate_sql.sh"]
-    restart: always
 
 networks:
   mynetwork:

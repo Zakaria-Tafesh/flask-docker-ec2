@@ -1,0 +1,3 @@
+-- Grant necessary privileges to the user
+GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';
+FLUSH PRIVILEGES;
