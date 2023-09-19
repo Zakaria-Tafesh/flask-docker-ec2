@@ -1,0 +1,12 @@
+# Use the official MySQL image as the base image
+FROM mysql:5.7
+
+# Copy the SQL script and the entrypoint script into the container
+COPY generate_sql.sh /generate_sql.sh
+COPY grant_privileges_template.sql /grant_privileges_template.sql
+
+# Set execute permissions on the entrypoint script
+RUN chmod +x /generate_sql.sh
+
+# Define the entrypoint script
+ENTRYPOINT ["/generate_sql.sh"]
