@@ -57,7 +57,7 @@ version: '3'
 services:
   mysql:
     image: mysql:5.7
-    container_name: mysql-init-container
+    container_name: mysql-container
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -66,8 +66,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql-init-data:/var/lib/mysql-init
-      - ./mysql-init-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql-data:/var/lib/mysql
+      - ./mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - mynetwork
 
