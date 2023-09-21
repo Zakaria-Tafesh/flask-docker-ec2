@@ -56,6 +56,9 @@
 version: '3'
 services:
   mysql:
+    env_file:
+      - .env
+
     image: mysql:5.7
     container_name: mysql-container
     environment:
@@ -69,6 +72,7 @@ services:
       - mysql-data:/var/lib/mysql
       - /home/ubuntu/shared_docker/.env:/app/.env  # Map the .env file from your host
       - ./mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+
     networks:
       - mynetwork
 
