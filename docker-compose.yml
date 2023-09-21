@@ -1,11 +1,11 @@
-version: '3.8'
-
-services:
-#  mysql:
+#version: '3.8'
+#
+#services:
+#  mysql-init:
 #    build:
 #      context: .
-#      dockerfile: Dockerfile.mysql  # Use the custom Dockerfile for MySQL
-#    container_name: flask-mysql
+#      dockerfile: Dockerfile-init  # Use the custom Dockerfile for MySQL
+#    container_name: flask-mysql-init
 #    environment:
 #      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 #      MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -14,7 +14,7 @@ services:
 #    network_mode: host
 #
 #    volumes:
-#      - mysql_data:/var/lib/mysql
+#      - mysql_data:/var/lib/mysql-init
 #      - /etc/localtime:/etc/localtime:ro
 
 #  flaskapp:
@@ -32,7 +32,7 @@ services:
 #      - /etc/localtime:/etc/localtime:ro
 #
 #    depends_on:
-#      - mysql
+#      - mysql-init
 
 #  nginx:
 #    build: ./nginx
@@ -53,11 +53,11 @@ services:
 #      - /home/ubuntu/shared_docker/:/opt/shared_docker/
 #      - /etc/localtime:/etc/localtime:ro
 
+version: '3'
+services:
   mysql:
-    build:
-      context: ./mysql
-      dockerfile: Dockerfile.mysql
-    container_name: flask-mysql
+    image: mysql:5.7
+    container_name: mysql-init-container
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -66,9 +66,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql_data:/var/lib/mysql
-      - ./init_template.sql:/docker-entrypoint-initdb.d/init_template.sql
-      - ./entrypoint.sh:/docker-entrypoint-initdb.d/entrypoint.sh
+      - mysql-init-data:/var/lib/mysql-init
+      - ./mysql-init-init/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - mynetwork
 
@@ -76,4 +75,4 @@ networks:
   mynetwork:
 
 volumes:
-  mysql_data:
+  mysql-data:
