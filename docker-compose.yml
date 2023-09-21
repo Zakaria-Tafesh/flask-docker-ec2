@@ -57,7 +57,7 @@ version: '3'
 services:
   mysql:
     env_file:
-      - .env
+      - /home/ubuntu/shared_docker/.env  # Use the absolute path to your .env file
 
     image: mysql:5.7
     container_name: mysql-container
