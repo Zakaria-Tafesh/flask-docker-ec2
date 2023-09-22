@@ -69,9 +69,9 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-      - /home/ubuntu/shared_docker/.env:/app/.env
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
-      - /etc/localtime:/etc/localtime:ro
+#      - /home/ubuntu/shared_docker/.env:/app/.env
+#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
+#      - /etc/localtime:/etc/localtime:ro
 
 volumes:
   mysql-data:
