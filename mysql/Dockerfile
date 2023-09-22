@@ -7,4 +7,4 @@ COPY query.sh /usr/local/bin/query.sh
 RUN chmod +x /usr/local/bin/query.sh
 
 # Run the script when the container starts
-CMD ["/usr/local/bin/query.sh"]
+CMD sleep 30 && /usr/local/bin/query.sh
