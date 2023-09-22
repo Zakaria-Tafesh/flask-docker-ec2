@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#echo "Starting entrypoint.sh ..."
+echo "Starting entrypoint.sh ..."
 
 # Function to check if MySQL is up and running
 #mysql_is_up() {
@@ -17,6 +17,7 @@
 #/usr/local/bin/query.sh
 
 # Wait for a few seconds to give MySQL time to initialize
+
 sleep 10
 
 # Run your query script
