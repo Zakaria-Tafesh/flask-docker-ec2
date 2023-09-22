@@ -70,16 +70,8 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - /home/ubuntu/shared_docker/.env:/app/.env
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
       - /etc/localtime:/etc/localtime:ro
-#    networks:
-#      - mynetwork
-#    healthcheck:
-#      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-#      interval: 10s
-#      retries: 5
-
-networks:
-  mynetwork:
 
 volumes:
   mysql-data:
