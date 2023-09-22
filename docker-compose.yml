@@ -67,11 +67,11 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
+#    volumes:
+#      - mysql-data:/var/lib/mysql
 #      - /home/ubuntu/shared_docker/.env:/app/.env
 #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
 #      - /etc/localtime:/etc/localtime:ro
 
-volumes:
-  mysql-data:
+#volumes:
+#  mysql-data:
