@@ -8,5 +8,5 @@ MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 QUERY="SELECT CONCAT('The user is: ', '$MYSQL_USER');"
 
-mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "$QUERY"
+mysql -u root -p"$MYSQL_ROOT_PASSWORD" -S /var/run/mysqld/mysqld.sock -e "$QUERY"
 
