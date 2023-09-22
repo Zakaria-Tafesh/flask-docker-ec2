@@ -1,12 +1,15 @@
 #!/bin/bash
 
-set -e
+# Function to check if MySQL is up and running
+mysql_is_up() {
+  mysqladmin ping -h localhost --silent
+}
 
-# Replace environment variables in the SQL template and create the SQL file
-sed -e "s/\${MYSQL_DATABASE}/$MYSQL_DATABASE/g" \
-    -e "s/\${MYSQL_USER}/$MYSQL_USER/g" \
-    -e "s/\${MYSQL_PASSWORD}/$MYSQL_PASSWORD/g" /docker-entrypoint-initdb.d/init_template.sql > /docker-entrypoint-initdb.d/init.sql
+# Wait for MySQL to become available
+while ! mysql_is_up; do
+  echo "Waiting for MySQL to become available..."
+  sleep 10
+done
 
-
-# Run the MySQL Docker entrypoint script
-/docker-entrypoint.sh "$@"
+# Once MySQL is up, run your query script
+/usr/local/bin/query.sh
