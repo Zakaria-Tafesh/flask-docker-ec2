@@ -7,4 +7,4 @@ COPY query.sh /usr/local/bin/query.sh
 RUN chmod +x /usr/local/bin/query.sh
 
 # Set the entrypoint to run the script
-ENTRYPOINT ["/usr/local/bin/query.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
