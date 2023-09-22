@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-echo "Starting entrypoint.sh 222 ..."
+echo "Starting entrypoint.sh 333 ..."
 
 # Function to check if MySQL is up and running
 #mysql_is_up() {
