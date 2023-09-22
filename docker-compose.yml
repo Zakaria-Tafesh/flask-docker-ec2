@@ -1,11 +1,11 @@
 #version: '3.8'
 #
 #services:
-#  mysql-init:
+#  mysql:
 #    build:
 #      context: .
 #      dockerfile: Dockerfile-init  # Use the custom Dockerfile for MySQL
-#    container_name: flask-mysql-init
+#    container_name: flask-mysql
 #    environment:
 #      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 #      MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -14,7 +14,7 @@
 #    network_mode: host
 #
 #    volumes:
-#      - mysql_data:/var/lib/mysql-init
+#      - mysql_data:/var/lib/mysql
 #      - /etc/localtime:/etc/localtime:ro
 
 #  flaskapp:
@@ -32,7 +32,7 @@
 #      - /etc/localtime:/etc/localtime:ro
 #
 #    depends_on:
-#      - mysql-init
+#      - mysql
 
 #  nginx:
 #    build: ./nginx
@@ -56,6 +56,8 @@
 version: '3'
 services:
   mysql:
+    build: ./mysql
+
     env_file:
       - /home/ubuntu/shared_docker/.env  # Use the absolute path to your .env file
 
@@ -71,7 +73,8 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - /home/ubuntu/shared_docker/.env:/app/.env  # Map the .env file from your host
-      - ./mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - /etc/localtime:/etc/localtime:ro
 
     networks:
       - mynetwork
