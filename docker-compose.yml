@@ -56,8 +56,6 @@
 version: '3'
 services:
   mysql:
-    build:
-      context: ./mysql  # Specify the context for the build
     env_file:
       - /home/ubuntu/shared_docker/.env
     image: mysql:5.7
@@ -72,10 +70,9 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - /home/ubuntu/shared_docker/.env:/app/.env
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - /etc/localtime:/etc/localtime:ro
-    networks:
-      - mynetwork
+#    networks:
+#      - mynetwork
 #    healthcheck:
 #      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
 #      interval: 10s
