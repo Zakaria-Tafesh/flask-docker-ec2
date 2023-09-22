@@ -20,6 +20,8 @@ echo "Starting entrypoint.sh ..."
 
 sleep 10
 
+echo "After Sleep 10 sec "
+
 # Run your query script
 exec /usr/local/bin/query.sh
 
