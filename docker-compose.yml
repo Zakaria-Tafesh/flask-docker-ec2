@@ -28,7 +28,7 @@
 #      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 #    network_mode: host
 #    volumes:
-#      - /home/ubuntu/shared_docker/:/opt/shared_docker/
+#      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
 #      - /etc/localtime:/etc/localtime:ro
 #
 #    depends_on:
@@ -50,14 +50,14 @@
 #    restart: always
 #    network_mode: host
 #    volumes:
-#      - /home/ubuntu/shared_docker/:/opt/shared_docker/
+#      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
 #      - /etc/localtime:/etc/localtime:ro
 
 version: '3'
 services:
   mysql:
-    env_file:
-      - /home/ubuntu/shared_docker/.env
+#    env_file:
+#      - /mydata/ubuntu/shared_docker/.env
     image: mysql:5.7
     container_name: mysql-container
     environment:
@@ -69,7 +69,7 @@ services:
       - "3306:3306"
 #    volumes:
 #      - mysql-data:/var/lib/mysql
-#      - /home/ubuntu/shared_docker/.env:/app/.env
+#      - /mydata/ubuntu/shared_docker/.env:/app/.env
 #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
 #      - /etc/localtime:/etc/localtime:ro
 
