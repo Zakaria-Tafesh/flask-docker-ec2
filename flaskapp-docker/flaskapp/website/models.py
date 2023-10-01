@@ -40,6 +40,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(1000))
     first_name = db.Column(db.String(150))
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), default=func.now(), onupdate=func.now())
+
     notes = db.relationship('Note')
     # zones = db.relationship('Zone')
     zones = db.relationship('Zone', back_populates='user')
