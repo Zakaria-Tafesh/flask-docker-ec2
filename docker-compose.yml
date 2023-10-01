@@ -67,6 +67,8 @@ services:
       - "3306:3306"
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql-data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
 
 #    volumes:
 #      - mysql-data:/var/lib/mysql
@@ -74,5 +76,5 @@ services:
 #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
 #      - /etc/localtime:/etc/localtime:ro
 
-#volumes:
-#  mysql-data:
+volumes:
+  mysql-data:
