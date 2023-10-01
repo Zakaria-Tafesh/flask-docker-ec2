@@ -33,8 +33,7 @@ print(f'mysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
 
 def create_app():
     app = Flask(__name__)
-    # app.config['SECRET_KEY'] = secret_key
-    app.config['SECRET_KEY'] = 'sdf34asad2342w3sdfgh99dfm4323dfgl23sdf2234zkasdyhqwjio43'
+    app.config['SECRET_KEY'] = secret_key
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'database.db')
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(shared_docker, 'database.db')
     # Construct the database URI

@@ -38,6 +38,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SECRET_KEY: ${SECRET_KEY}
     network_mode: host
     volumes:
       - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
