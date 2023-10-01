@@ -1,14 +1,3 @@
-
-#
-#  scraper_2023:
-#    build: ./scraper_docker
-#    container_name: scraper_2023
-#    restart: always
-#    network_mode: host
-#    volumes:
-#      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
-#      - /etc/localtime:/etc/localtime:ro
-
 version: '3'
 services:
   mysql:
@@ -55,6 +44,15 @@ services:
     restart: always
     network_mode: host
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+  scraper_2023:
+    build: ./scraper_docker
+    container_name: scraper_2023
+    restart: always
+    network_mode: host
+    volumes:
+      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
 
 volumes:
