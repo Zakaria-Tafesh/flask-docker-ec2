@@ -28,7 +28,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SECRET_KEY: ${SECRET_KEY}
-    network_mode: host
+#    network_mode: host
     volumes:
       - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
@@ -42,7 +42,7 @@ services:
     environment:
       - SERVER_NAME=0.0.0.0
     restart: always
-    network_mode: host
+#    network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
 
@@ -50,7 +50,7 @@ services:
     build: ./scraper_docker
     container_name: scraper_2023
     restart: always
-    network_mode: host
+#    network_mode: host
     volumes:
       - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
