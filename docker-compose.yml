@@ -56,8 +56,6 @@
 version: '3'
 services:
   mysql:
-#    env_file:
-#      - /mydata/ubuntu/shared_docker/.env
     image: mysql:5.7
     container_name: mysql-container
     environment:
@@ -67,6 +65,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
 #    volumes:
 #      - mysql-data:/var/lib/mysql
 #      - /mydata/ubuntu/shared_docker/.env:/app/.env
