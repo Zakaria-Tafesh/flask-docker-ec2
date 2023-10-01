@@ -1,48 +1,4 @@
-#version: '3.8'
-#
-#services:
-#  mysql:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-init  # Use the custom Dockerfile for MySQL
-#    container_name: flask-mysql
-#    environment:
-#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-#      MYSQL_DATABASE: ${MYSQL_DATABASE}
-#      MYSQL_USER: ${MYSQL_USER}
-#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-#    network_mode: host
-#
-#    volumes:
-#      - mysql_data:/var/lib/mysql
-#      - /etc/localtime:/etc/localtime:ro
 
-#  flaskapp:
-#    build: flaskapp-docker
-#    container_name: flaskapp
-#    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-#      MYSQL_DATABASE: ${MYSQL_DATABASE}
-#      MYSQL_USER: ${MYSQL_USER}
-#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-#    network_mode: host
-#    volumes:
-#      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
-#      - /etc/localtime:/etc/localtime:ro
-#
-#    depends_on:
-#      - mysql
-
-#  nginx:
-#    build: ./nginx
-#    container_name: nginx
-#    environment:
-#      - SERVER_NAME=0.0.0.0
-#    restart: always
-#    network_mode: host
-#    volumes:
-#      - /etc/localtime:/etc/localtime:ro
 #
 #  scraper_2023:
 #    build: ./scraper_docker
@@ -58,6 +14,8 @@ services:
   mysql:
     image: mysql:5.7
     container_name: mysql-container
+    restart: always
+
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -65,16 +23,38 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
+    network_mode: host
     volumes:
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql-data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
 
-#    volumes:
-#      - mysql-data:/var/lib/mysql
-#      - /mydata/ubuntu/shared_docker/.env:/app/.env
-#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the init.sql file
-#      - /etc/localtime:/etc/localtime:ro
+  flaskapp:
+    build: flaskapp-docker
+    container_name: flaskapp
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    network_mode: host
+    volumes:
+      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
+      - /etc/localtime:/etc/localtime:ro
+
+    depends_on:
+      - mysql
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    environment:
+      - SERVER_NAME=0.0.0.0
+    restart: always
+    network_mode: host
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
 
 volumes:
   mysql-data:
