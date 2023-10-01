@@ -1,11 +1,18 @@
 import os
 import sqlite3
-from input.config import PATH_SHARED_DOCKER
+import traceback
 
+from input.config import PATH_SHARED_DOCKER
+import mysql.connector
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 DB_NAME = 'database.db'
 DB_PATH = os.path.join(PATH_SHARED_DOCKER, DB_NAME)
+
+MYSQL_USER = os.getenv('MYSQL_USER')
+# DB_USER = 'zak'
+MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')
 
 
 class MySQLite:
@@ -84,11 +91,60 @@ class MySQLite:
         self.close_con()
 
 
-if __name__ == "__main__":
-    my_sql = MySQLite()
-    # my_sql.get_zones()
-    my_sql.get_columns_types()
+class MySQLDB:
 
-    my_sql.add_column(table_name='zone', column_name='last_run_at', data_type='DATETIME')
-    # my_sql.rename_column(table_name='zone', column_name='date', new_column_name='created_at')
-    my_sql.get_columns_types()
+    def __init__(self):
+        self.cur = None
+        self.con = None
+        self.db_config = {
+            'user': MYSQL_USER,
+            'password': MYSQL_PASSWORD,
+            'host': 'mysql',  # Use the service name 'mysql'
+            'database': MYSQL_DATABASE,
+        }
+
+    def get_zones(self):
+        self.open_con()
+
+        self.table = 'zone'
+        query = f"SELECT client_name, payload FROM {self.table}"
+        res = self.cur.execute(query)
+        clients_list = []
+        for c_name, payload in res.fetchall():
+            print(c_name, payload)
+            clients_list.append({'client_name': c_name,
+                                 'payload_fresh_map': payload})
+
+        self.close_con()
+        return clients_list
+
+    def open_con(self):
+        try:
+            # Connect to the MySQL server
+            self.con = mysql.connector.connect(**self.db_config)
+            # Create a cursor
+            self.cur = self.con.cursor()
+            print("Successfully Connected to MySQLDB")
+
+        except:
+            print("Error while Opening MySQLDB connection")
+            traceback.print_exc()
+
+    def close_con(self):
+        if self.con:
+            # Close the cursor and the connection when done
+            self.con.close()
+            self.cur.close()
+            print("MySQLDB connection closed")
+        else:
+            print("No MySQLDB connection to Close")
+
+
+# if __name__ == "__main__":
+#     my_sql = MySQLite()
+#     # my_sql.get_zones()
+#     my_sql.get_columns_types()
+#
+#     my_sql.add_column(table_name='zone', column_name='last_run_at', data_type='DATETIME')
+#     # my_sql.rename_column(table_name='zone', column_name='date', new_column_name='created_at')
+#     my_sql.get_columns_types()

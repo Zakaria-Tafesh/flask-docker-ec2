@@ -3,7 +3,7 @@ from utils.api import Request, Response
 from input.config import ZONES_FOLDER_ID, RUN_AT
 from utils.google_sheet import GoogleSheet
 from utils.utils import get_date_today
-from utils.db import MySQLite
+from utils.db import MySQLite, MySQLDB
 import time
 import schedule
 from pytz import timezone
@@ -12,8 +12,12 @@ from utils.logger import logger
 
 def main():
     logger.info('Starting the script')
-    my_sqlite = MySQLite()
-    clients_list = my_sqlite.get_zones()
+    # my_sqlite = MySQLite()
+    # clients_list = my_sqlite.get_zones()
+
+    mysqldb = MySQLite()
+    clients_list = mysqldb.get_zones()
+
     for client in clients_list:
         logger.info(str(datetime.datetime.now()))
         payload_fresh_map = client['payload_fresh_map']
@@ -45,8 +49,8 @@ def main():
 if __name__ == "__main__":
     # main()
 
-    schedule.every().day.at(RUN_AT, timezone("Canada/Mountain")).do(main)
-    # schedule.every(10).seconds.do(main)
+    # schedule.every().day.at(RUN_AT, timezone("Canada/Mountain")).do(main)
+    schedule.every(10).seconds.do(main)
     logger.info(str(datetime.datetime.now()))
     # while True:
     #     schedule.run_pending()
