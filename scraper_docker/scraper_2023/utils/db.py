@@ -110,8 +110,8 @@ class MySQLDB:
         self.open_con()
 
         self.table = 'zone'
-        # query = f"SELECT client_name, payload FROM {self.table}"
-        query = "SELECT * FROM zone"
+        query = f"SELECT client_name, payload FROM {self.table}"
+        # query = "SELECT * FROM zone"
         # query = "show tables"
         logger.info(query)
 
@@ -121,8 +121,10 @@ class MySQLDB:
         records = self.cur.fetchall()
 
         # Print the fetched data
-        for row in records:
-            logger.info(row)
+        for c_name, payload in records:
+            logger.info(c_name, payload)
+            clients_list.append({'client_name': c_name,
+                                 'payload_fresh_map': payload})
 
         # for c_name, payload in self.cur.fetchall():
         #     print(c_name, payload)
