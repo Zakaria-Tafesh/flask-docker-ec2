@@ -111,8 +111,8 @@ class MySQLDB:
 
         self.table = 'zone'
         # query = f"SELECT client_name, payload FROM {self.table}"
-        # query = "SELECT * FROM flask_scraper_db4.zone"
-        query = "show tables"
+        query = "SELECT * FROM zone"
+        # query = "show tables"
         logger.info(query)
 
         self.cur.execute(query)
