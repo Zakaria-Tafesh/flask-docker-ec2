@@ -111,6 +111,9 @@ class Request:
     def call_map(self):
         logger.info('call_map')
         self.update_params()
+        logger.info(f'self.api_map {self.api_map}')
+        logger.info(f'self.headers {self.headers}')
+        logger.info(f'self.payload {self.payload}')
 
         response = requests.post(self.api_map, data=self.payload, headers=self.headers, params={"": ""})
         logger.info(response.status_code)
