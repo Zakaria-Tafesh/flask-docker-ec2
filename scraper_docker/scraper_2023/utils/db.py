@@ -4,6 +4,8 @@ import traceback
 
 from input.config import PATH_SHARED_DOCKER
 import mysql.connector
+from .logger import logger
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 DB_NAME = 'database.db'
@@ -31,7 +33,7 @@ class MySQLite:
         res = self.cur.execute(query)
         clients_list = []
         for c_name, payload in res.fetchall():
-            print(c_name, payload)
+            logger.info(c_name, payload)
             clients_list.append({'client_name': c_name,
                                  'payload_fresh_map': payload})
 
@@ -42,16 +44,16 @@ class MySQLite:
         if self.con:
             self.cur.close()
             self.con.close()
-            print("sqlite connection is closed")
+            logger.info("sqlite connection is closed")
 
     def open_con(self):
         try:
             self.con = sqlite3.connect(DB_PATH)
             self.cur = self.con.cursor()
-            print("Successfully Connected to SQLite")
+            logger.info("Successfully Connected to SQLite")
             return self.con, self.cur
         except sqlite3.Error as error:
-            print("Error while Opening sqlite connection", error)
+            logger.info("Error while Opening sqlite connection", error)
 
     def add_column(self, table_name, column_name, data_type):
         self.open_con()
@@ -64,7 +66,7 @@ class MySQLite:
         self.con.commit()
 
         self.close_con()
-        print('column add_column successfully')
+        logger.info('column add_column successfully')
 
     def rename_column(self, table_name, column_name, new_column_name):
         self.open_con()
@@ -72,12 +74,12 @@ class MySQLite:
         base_command = f"ALTER TABLE {table_name} RENAME COLUMN {column_name} TO {new_column_name}"
         # sql_command = base_command.format(table_name=table_name, column_name=column_name,
         #                                   new_column_name=new_column_name)
-        print(base_command)
+        logger.info(base_command)
         self.cur.execute(base_command)
         self.con.commit()
 
         self.close_con()
-        print('column rename_column successfully')
+        logger.info('column rename_column successfully')
 
     def get_columns_types(self):
         self.open_con()
@@ -111,7 +113,7 @@ class MySQLDB:
         # query = f"SELECT client_name, payload FROM {self.table}"
         # query = "SELECT * FROM flask_scraper_db4.zone"
         query = "show tables"
-        print(query)
+        logger.info(query)
 
         self.cur.execute(query)
 
@@ -120,7 +122,7 @@ class MySQLDB:
 
         # Print the fetched data
         for row in records:
-            print(row)
+            logger.info(row)
 
         # for c_name, payload in self.cur.fetchall():
         #     print(c_name, payload)
@@ -136,10 +138,10 @@ class MySQLDB:
             self.con = mysql.connector.connect(**self.db_config)
             # Create a cursor
             self.cur = self.con.cursor()
-            print("Successfully Connected to MySQLDB")
-            print(self.db_config)
+            logger.info("Successfully Connected to MySQLDB")
+            logger.info(str(self.db_config))
         except:
-            print("Error while Opening MySQLDB connection")
+            logger.info("Error while Opening MySQLDB connection")
             traceback.print_exc()
 
     def close_con(self):
@@ -147,9 +149,9 @@ class MySQLDB:
             # Close the cursor and the connection when done
             self.con.close()
             self.cur.close()
-            print("MySQLDB connection closed")
+            logger.info("MySQLDB connection closed")
         else:
-            print("No MySQLDB connection to Close")
+            logger.info("No MySQLDB connection to Close")
 
 
 # if __name__ == "__main__":
