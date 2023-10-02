@@ -56,7 +56,7 @@ services:
 
     network_mode: host
     volumes:
-#      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
+      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
 
     depends_on:
