@@ -15,6 +15,7 @@ class Zone(db.Model):
     client_name = db.Column(db.String(20))
     url = db.Column(db.String(4000))
     payload = db.Column(db.String(20_000))
+    source = db.Column(db.String(45))
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), default=func.now(), onupdate=func.now())
 

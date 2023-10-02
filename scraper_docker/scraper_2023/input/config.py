@@ -109,8 +109,27 @@ headers_fresh = {
             "X-Requested-With": "XMLHttpRequest"
         }
 
-api_fresh = "https://www.freshrealty.ca/property-search/res/includes/search_application/get_listings.asp"
+headers_toronto = {
+            "authority": "www.torontopropertyhunters.com",
+            "method": "POST",
+            "path": "/property-search/res/includes/search_application/get_listings_for_map.asp",
+            "scheme": "https",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-US,en;q=0.9,ar-AE;q=0.8,ar;q=0.7",
+            "Cache-Control": "no-cache",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Origin": "https://www.torontopropertyhunters.com",
+            "Referer": "https://www.torontopropertyhunters.com/property-search/results/",
+            "User-Agent ": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+            "X-Kl-Ajax-Request": "Ajax_Request",
+            "X-Requested-With": "XMLHttpRequest"
+        }
+
+api_fresh_list = "https://www.freshrealty.ca/property-search/res/includes/search_application/get_listings.asp"
 api_fresh_map = "https://www.freshrealty.ca/property-search/res/includes/search_application/get_listings_for_map.asp"
+
+api_toronto_list = "https://www.torontopropertyhunters.com/property-search/res/includes/search_application/get_listings.asp"
+api_toronto_map = "https://www.torontopropertyhunters.com/property-search/res/includes/search_application/get_listings_for_map.asp"
 
 '''
 Response Headers

@@ -20,14 +20,16 @@ def main():
 
     for client in clients_list:
         logger.info(str(datetime.datetime.now()))
-        payload_fresh_map = client['payload_fresh_map']
+        payload = client['payload']
         client_name = client['client_name']
+        source = client['source']
         logger.info(f'client_name : {client_name}')
-        logger.info(f'payload_fresh_map : {payload_fresh_map}')
-        r = Request(payload=payload_fresh_map)
+        logger.info(f'payload : {payload}')
+        logger.info(f'source : {source}')
+        r = Request(payload=payload, source=source)
 
-        fresh_text = r.call_fresh()
-        resp = Response(fresh_text)
+        resp_text = r.call_map()
+        resp = Response(resp_text)
         homes = resp.run()
 
         # Create a folder with client_name

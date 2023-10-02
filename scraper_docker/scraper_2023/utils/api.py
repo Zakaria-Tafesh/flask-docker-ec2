@@ -5,8 +5,8 @@ import traceback
 import requests
 # from requests_html import HTMLSession
 from dataclasses import dataclass
-# from rich import print
-from input.config import headers_fresh, api_fresh, api_fresh_map
+from rich import print
+from input.config import headers_fresh, api_fresh_list, api_fresh_map, headers_toronto, api_toronto_list, api_toronto_map
 from utils.logger import logger
 
 
@@ -56,13 +56,26 @@ class Response:
 class Request:
     url: str = None
     payload: dict = None
+    source: str = None
     page_num: int = 1
     render_page: bool = False
     status_code: int = 400
     response_json: dict = None
     session: None = None
-    api_fresh: str = api_fresh
-    api_fresh_map: str = api_fresh_map
+    headers: dict = None
+    api_list: str = None
+    api_map: str = None
+
+    def update_params(self):
+        print('Updating Params')
+        if self.source == 'freshrealty':
+            self.headers = headers_fresh
+            self.api_list = api_fresh_list
+            self.api_map = api_fresh_map
+        elif self.source == 'torontoPH':
+            self.headers = headers_toronto
+            self.api_list = api_toronto_list
+            self.api_map = api_toronto_map
 
     def request(self):
         def update_header():
@@ -87,20 +100,20 @@ class Request:
         #     a = res_h.html.find('#lw${mlsId}')
         #     print(a)
         #     return res_h
+        self.update_params()
 
         if self.render_page:
             res = request_normal()
         else:
             res = request_normal()
-
         logger.info(res.text)
         return res.status_code
 
-    def call_fresh(self):
-        logger.info('call_fresh')
-        # response = requests.request("POST", self.api_fresh_map, data=payload_fresh_map, headers=headers_fresh, params={"": ""})
+    def call_map(self):
+        logger.info('call_map')
+        self.update_params()
 
-        response = requests.post(self.api_fresh_map, data=self.payload, headers=headers_fresh, params={"": ""})
+        response = requests.post(self.api_map, data=self.payload, headers=self.headers, params={"": ""})
         logger.info(response.status_code)
 
         if response.status_code == 200:
