@@ -15,7 +15,7 @@ def main():
     # my_sqlite = MySQLite()
     # clients_list = my_sqlite.get_zones()
 
-    mysqldb = MySQLite()
+    mysqldb = MySQLDB()
     clients_list = mysqldb.get_zones()
 
     for client in clients_list:
