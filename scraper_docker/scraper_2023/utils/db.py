@@ -108,8 +108,9 @@ class MySQLDB:
         self.open_con()
 
         self.table = 'zone'
-        query = f"-- SELECT client_name, payload FROM {self.table}"
-        query = "SELECT * FROM flask_scraper_db4.zone;"
+        # query = f"SELECT client_name, payload FROM {self.table}"
+        # query = "SELECT * FROM flask_scraper_db4.zone"
+        query = "show tables"
         print(query)
 
         res = self.cur.execute(query)
