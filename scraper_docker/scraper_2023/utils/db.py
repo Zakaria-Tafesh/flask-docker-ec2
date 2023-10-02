@@ -113,14 +113,19 @@ class MySQLDB:
         query = "show tables"
         print(query)
 
-        res = self.cur.execute(query)
-        print(res)
+        self.cur.execute(query)
 
         clients_list = []
-        for c_name, payload in res.fetchall():
-            print(c_name, payload)
-            clients_list.append({'client_name': c_name,
-                                 'payload_fresh_map': payload})
+        records = self.cur.fetchall()
+
+        # Print the fetched data
+        for row in records:
+            print(row)
+
+        # for c_name, payload in self.cur.fetchall():
+        #     print(c_name, payload)
+        #     clients_list.append({'client_name': c_name,
+        #                          'payload_fresh_map': payload})
 
         self.close_con()
         return clients_list
