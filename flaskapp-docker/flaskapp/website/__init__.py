@@ -19,7 +19,7 @@ db_host = 'mysql'  # This should match the service name in your Docker Compose f
 
 
 
-DB_HOST = 'localhost'
+DB_HOST = '127.0.0.1'
 DB_PORT = '3306'  # Assuming the default MySQL port
 
 # The other database configuration options (username, password, database name) remain the same
