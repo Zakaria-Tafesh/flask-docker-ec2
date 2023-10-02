@@ -115,7 +115,7 @@ class MySQLDB:
         self.cur.execute(query)
         clients_list = []
         for c_name, payload, source in self.cur.fetchall():
-            logger.info(c_name, payload, source)
+            logger.info(f'c_name{c_name}\n payload {payload}\n source {source}')
             clients_list.append({'client_name': c_name,
                                  'payload': payload,
                                  'source': source,
