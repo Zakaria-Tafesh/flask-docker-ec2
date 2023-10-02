@@ -3,9 +3,9 @@ import time
 import traceback
 
 import requests
-from requests_html import HTMLSession
+# from requests_html import HTMLSession
 from dataclasses import dataclass
-from rich import print
+# from rich import print
 from input.config import headers_fresh, api_fresh, api_fresh_map
 from utils.logger import logger
 
@@ -78,20 +78,21 @@ class Request:
             res_n = self.session.get(url=self.url)
             return res_n
 
-        def request_html():
-            logger.info('request_html')
-            self.session = HTMLSession()
-            update_header()
-            res_h = self.session.get(self.url)
-            res_h.html.render(sleep=5, keep_page=True, scrolldown=2)
-            a = res_h.html.find('#lw${mlsId}')
-            print(a)
-            return res_h
+        # def request_html():
+        #     logger.info('request_html')
+        #     self.session = HTMLSession()
+        #     update_header()
+        #     res_h = self.session.get(self.url)
+        #     res_h.html.render(sleep=5, keep_page=True, scrolldown=2)
+        #     a = res_h.html.find('#lw${mlsId}')
+        #     print(a)
+        #     return res_h
 
         if self.render_page:
-            res = request_html()
+            res = request_normal()
         else:
             res = request_normal()
+
         logger.info(res.text)
         return res.status_code
 
