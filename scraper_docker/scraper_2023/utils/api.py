@@ -1,11 +1,10 @@
 import json
-import time
+# import time
 import traceback
 
 import requests
 # from requests_html import HTMLSession
 from dataclasses import dataclass
-from rich import print
 from input.config import headers_fresh, api_fresh_list, api_fresh_map, headers_toronto, api_toronto_list, api_toronto_map
 from utils.logger import logger
 
