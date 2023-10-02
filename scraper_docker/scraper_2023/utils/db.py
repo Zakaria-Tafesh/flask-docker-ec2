@@ -13,6 +13,7 @@ MYSQL_USER = os.getenv('MYSQL_USER')
 # DB_USER = 'zak'
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
 MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')
+DB_HOST = '127.0.0.1'
 
 
 class MySQLite:
@@ -99,7 +100,7 @@ class MySQLDB:
         self.db_config = {
             'user': MYSQL_USER,
             'password': MYSQL_PASSWORD,
-            'host': 'mysql',  # Use the service name 'mysql'
+            'host': DB_HOST,  # Use the service name 'mysql'
             'database': MYSQL_DATABASE,
         }
 
