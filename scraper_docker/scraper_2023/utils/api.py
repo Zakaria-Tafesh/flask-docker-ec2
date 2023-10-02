@@ -111,6 +111,8 @@ class Request:
     def call_map(self):
         logger.info('call_map')
         self.update_params()
+        self.headers = {'authority': 'www.torontopropertyhunters.com', 'method': 'POST', 'path': '/property-search/res/includes/search_application/get_listings_for_map.asp', 'scheme': 'https', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'en-US,en;q=0.9,ar-AE;q=0.8,ar;q=0.7', 'Cache-Control': 'no-cache', 'Content-Type': 'application/x-www-form-urlencoded', 'Origin': 'https://www.torontopropertyhunters.com', 'Referer': 'https://www.torontopropertyhunters.com/property-search/results/', 'User-Agent ': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36', 'X-Kl-Ajax-Request': 'Ajax_Request', 'X-Requested-With': 'XMLHttpRequest'}
+
         logger.info(f'self.api_map {self.api_map}')
         logger.info(f'self.headers {self.headers}')
         logger.info(f'self.payload {self.payload}')
