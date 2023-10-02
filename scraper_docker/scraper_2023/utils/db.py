@@ -109,7 +109,11 @@ class MySQLDB:
 
         self.table = 'zone'
         query = f"SELECT client_name, payload FROM {self.table}"
+        print(query)
+
         res = self.cur.execute(query)
+        print(res)
+
         clients_list = []
         for c_name, payload in res.fetchall():
             print(c_name, payload)
