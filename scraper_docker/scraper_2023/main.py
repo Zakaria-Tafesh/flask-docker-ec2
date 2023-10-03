@@ -52,7 +52,7 @@ if __name__ == "__main__":
     # main()
 
     # schedule.every().day.at(RUN_AT, timezone("Canada/Mountain")).do(main)
-    schedule.every(10).seconds.do(main)
+    schedule.every(24).hours.do(main)
     logger.info(str(datetime.datetime.now()))
     # while True:
     #     schedule.run_pending()
