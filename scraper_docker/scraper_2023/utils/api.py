@@ -114,6 +114,10 @@ class Request:
     def decode_response(response):
         logger.info(response.status_code)
         if response.status_code < 300:
+            logger.info(response.text[:100])
+            logger.info('#'*100)
+            logger.info(response.content[:100])
+            logger.info('#'*100)
             decoded_text = response.content.decode('utf-8')  # Assuming it's UTF-8 encoded text
             logger.info(decoded_text[:100])
             return decoded_text
