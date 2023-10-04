@@ -30,6 +30,7 @@ services:
     volumes:
       - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
       - /etc/localtime:/etc/localtime:ro
+      - ./djangoapp-docker/djangoapp/:/app
 
     depends_on:
       - mysql
