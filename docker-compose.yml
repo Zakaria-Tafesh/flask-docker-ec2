@@ -17,23 +17,23 @@ services:
       - mysql-data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
 
-  djangoapp:
-    build: djangoapp-docker
-    container_name: djangoapp
-    restart: always
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      SECRET_KEY: ${SECRET_KEY}
-    network_mode: host
-    volumes:
-      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
-      - /etc/localtime:/etc/localtime:ro
-      - ./djangoapp-docker/djangoapp/:/app
-
-    depends_on:
-      - mysql
+#  djangoapp:
+#    build: djangoapp-docker
+#    container_name: djangoapp
+#    restart: always
+#    environment:
+#      MYSQL_DATABASE: ${MYSQL_DATABASE}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#      SECRET_KEY: ${SECRET_KEY}
+#    network_mode: host
+#    volumes:
+#      - /mydata/ubuntu/shared_docker/:/opt/shared_docker/
+#      - /etc/localtime:/etc/localtime:ro
+#      - ./djangoapp-docker/djangoapp/:/app
+#
+#    depends_on:
+#      - mysql
 
   flaskapp:
     build: flaskapp-docker
